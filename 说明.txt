@@ -1,0 +1,2 @@
+ssh=struts2+spring3+hibernate3 xx
+交由git管理
