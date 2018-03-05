@@ -1,2 +1,2 @@
 ssh=struts2+spring3+hibernate3 xx
-交由git管理
+交由git管理仓库位置E:\ITsource\9.27java\eclipse\Workspace-maven\zxl-pss
