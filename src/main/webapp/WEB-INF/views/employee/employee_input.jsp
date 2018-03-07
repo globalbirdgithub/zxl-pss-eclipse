@@ -44,14 +44,10 @@
 				        stringLength: {
 			                min: 6,
 			                max: 30,
-			                message:'请输入6至30个字'
+			                message:'请输入6至30个字符'
 			            },
-			            different: {
-	                        field: 'password',
-	                        message: '用户名不能和密码相同'
-	                    },
 				        remote: {
-		                    url: 'employee_checkUsername.action',
+		                    url: 'employee_checkUsername.action?id='+$('#username').val(),
 		                    delay : 2000,
 		                    message: '此用户名已存在'
 		                }
@@ -141,7 +137,7 @@
 				<div class="col-xs-12">													       <!-- .col-xs-* 针对超小屏幕和中等屏幕设备所定义的类 -->
 					<!-- 页面内容开始 -->
 					<form id="employeeFrom" class="form-horizontal" action="employee_save.action" role="form" method="post"><!-- form-horizontal将 label标签和控件组水平并排布局 -->
-						<s:hidden name="id"/>																   <!-- 解决修改回显问题 -->
+						<s:hidden id="username" name="id"/>																   <!-- 解决修改回显问题 -->
 						<div class="space-4"></div>
 						<div class="form-group">								      <!-- 改变 .form-group 的行为，使其表现为栅格系统中的行（row）， -->
 							<label class="col-sm-3 control-label no-padding-right" for="form-field-1">用户名 </label>
