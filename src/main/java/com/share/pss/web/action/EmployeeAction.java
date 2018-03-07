@@ -86,8 +86,23 @@ public class EmployeeAction extends CRUDAction<Employee>{
 		HttpServletResponse response = ServletActionContext.getResponse();
 		response.setContentType("json/html;charset=utf-8");
 		PrintWriter writer = response.getWriter();
-		boolean findByUsername = employeeService.findByUsername(username);
-		writer.print("{\"valid\":"+findByUsername+"}");
+		if(id==null){														//新增
+			boolean findByUsername = employeeService.findByUsername(username);
+			writer.print("{\"valid\":"+findByUsername+"}");
+		}else{																//修改
+			Employee dbEmployee = employeeService.get(id);
+			if(dbEmployee==null){                  							 //用户手动修改了id或者当前id被删除
+				writer.print("{\"valid\":false,\"message\":\"用户不存在\"}");
+				return NONE;												 //立即返回
+			}
+			String dbUsername = dbEmployee.getUsername();
+			if(username.equals(dbUsername)){
+				writer.print("{\"valid\":true}");
+			}else{
+				boolean findByUsername = employeeService.findByUsername(username);
+				writer.print("{\"valid\":"+findByUsername+"}");
+			}
+		}
 		return NONE;
 	}
 	//==================================实现ModelDriven和Prepareable接口解决属性丢失问题========================
