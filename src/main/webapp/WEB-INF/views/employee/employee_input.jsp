@@ -10,103 +10,13 @@
 <script type="text/javascript" src="plugins/validator/js/bootstrapValidator.js"></script>
 <!-- validator国际化（默认英文，下面的会覆盖上面的） -->
 <script type="text/javascript" src="plugins/validator/js/language/zh_CN.js"></script>
+<!-- 自定义模型js -->
+<script type="text/javascript" src="js/model/employee.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
-<script type="text/javascript">
-	//信息重置功能js
-	function clearForm(){
-		$(':input','form')																	 //匹配所有 input, textarea, select 和 button 元素  
-		 .not(':button, :submit, :reset, :hidden') 															      //去除所有与给定选择器匹配的元素
-		 .val('')  																									 //获得/设置匹配元素的当前值
-		 .removeAttr('checked')  																				 //从每一个匹配的元素中删除一个属性
-		 .removeAttr('selected'); 
-		$('select').prop('selectedIndex', 0);						//选中'---请选择---',jquery1.6以下版本$('select').attr('selectedIndex', 0)
-	}																			   //jquery1.6或以上版本$('select').prop('selectedIndex', 0)
-	//字段验证功能js
-	$(function(){
-		$("#employeeFrom").bootstrapValidator({
-			live:'submitted',                                                                                                //验证生效规则
-	        message: '值不能为空',                                                                                              //字段通用提示语
-	        feedbackIcons: {
-	            valid: 'glyphicon glyphicon-ok',
-	            invalid: 'glyphicon glyphicon-remove',
-	            validating: 'glyphicon glyphicon-refresh'
-	        },
-	        fields: {
-	            username: {
-	            	threshold:6,
-	                validators: {
-	                    notEmpty:{message:'请输入用户名'},
-	                    regexp: {
-	                        regexp: /^[a-zA-Z0-9_\.]+$/,
-	                        message:'请输入英文或者数字'
-	                    },
-				        stringLength: {
-			                min: 6,
-			                max: 30,
-			                message:'请输入6至30个字符'
-			            },
-				        remote: {
-		                    url: 'employee_checkUsername.action?id='+$('#username').val(),
-		                    delay : 2000,
-		                    message: '此用户名已存在'
-		                }
-	                }
-	            },
-		        password: {
-	                validators: {
-	                    notEmpty: {
-	                        message: '密码不能为空'
-	                    },
-	                    identical: {
-	                        field: 'confirmPassword',
-	                        message: '密码和验证密码不一致'
-	                    },
-	                    different: {
-	                        field: 'username',
-	                        message: '密码不能和用户名一样'
-	                    }
-	                }
-	            },
-	            confirmPassword: {
-	                validators: {
-	                    notEmpty: {
-	                        message: '验证密码不能为空'
-	                    },
-	                    identical: {
-	                        field: 'password',
-	                        message: '验证密码和密码不一致'
-	                    },
-	                    different: {
-	                        field: 'username',
-	                        message: '密码不能和用户名一样'
-	                    }
-	                }
-	            },
-	            email:{
-	                validators: {
-	                    emailAddress: {
-	                        message: '请输入有效的邮箱'
-	                    }
-	                }
-	            },
-	            age:{
-	            	validators:{
-	            		notEmpty:{message:'请输入年龄'},
-	            		integer:true,
-	            		between:{
-	            			min:18,
-	            			max:80
-	            		}
-	            	}
-	            }
-	        }
-		})
-	});
-</script>
+<title>员工页面</title>
 </head>
 <body>
-	<%-- <s:debug></s:debug> --%>
+	<s:debug></s:debug>
 	<div class="main-content">
 		<!-- 面包屑导航 -->
 		<div class="breadcrumbs" id="breadcrumbs">
@@ -137,7 +47,12 @@
 				<div class="col-xs-12">													       <!-- .col-xs-* 针对超小屏幕和中等屏幕设备所定义的类 -->
 					<!-- 页面内容开始 -->
 					<form id="employeeFrom" class="form-horizontal" action="employee_save.action" role="form" method="post"><!-- form-horizontal将 label标签和控件组水平并排布局 -->
-						<s:hidden id="username" name="id"/>																   <!-- 解决修改回显问题 -->
+						<s:hidden id="userId" name="id"/>																   <!-- 解决修改回显问题 -->
+						<s:hidden name="baseQuery.currentPage"/>
+						<s:hidden name="baseQuery.pageSize"/>
+						<s:hidden name="baseQuery.username"/>
+						<s:hidden name="baseQuery.email"/>
+						<s:hidden name="baseQuery.deptId"/>
 						<div class="space-4"></div>
 						<div class="form-group">								      <!-- 改变 .form-group 的行为，使其表现为栅格系统中的行（row）， -->
 							<label class="col-sm-3 control-label no-padding-right" for="form-field-1">用户名 </label>
@@ -191,12 +106,13 @@
 								<button class="btn btn-success" type="button" onclick="clearForm()">
 									<i class="icon-refresh bigger-110"></i> 清空
 								</button>
-								<button class="btn btn-warning" type="cancel">
+								<button class="btn btn-warning" type="button" onclick="cancel()">
 									<i class="icon-undo bigger-110"></i> 取消
 								</button>
 							</div>
 						</div>
 					</form>
+					<!-- 表单 -->
 				</div>
 			</div>
 		</div>

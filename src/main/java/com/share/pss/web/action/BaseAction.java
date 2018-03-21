@@ -11,6 +11,8 @@ import com.opensymphony.xwork2.ActionSupport;
 public abstract class BaseAction extends ActionSupport{
 	private static final long serialVersionUID = 1L;
 	public static final String RELOAD = "reload";
+	public static final String LOGIN_OUT = "loginOut";
+	public static final String LOGIN_FAIL = "loginFail";
 	//将部门对象添加到Map栈
 	protected void putContext(String key, Object value) {
 		ActionContext.getContext().put(key, value);

@@ -1,5 +1,12 @@
 package com.share.pss.web.action;
 
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.http.HttpServletResponse;
+
+import org.apache.struts2.ServletActionContext;
+
 import com.share.pss.domain.Department;
 import com.share.pss.query.DepartmentQuery;
 import com.share.pss.query.PageList;
@@ -22,16 +29,17 @@ public class DepartmentAction extends CRUDAction<Department>{
 		return pageList;
 	}
 	//Struts2管理(后台向前台提供)
-	private DepartmentQuery departmentQuery = new DepartmentQuery();
-	public DepartmentQuery getDepartmentQuery() {
-		return departmentQuery;
+	private DepartmentQuery baseQuery = new DepartmentQuery();
+	
+	public DepartmentQuery getBaseQuery() {
+		return baseQuery;
 	}
 	//值栈
 	private Department department;
 	//=====================Action方法======================
 	@Override
 	protected void list() {
-		this.pageList = departmentService.findByQuery(departmentQuery);
+		this.pageList = departmentService.findByQuery(baseQuery);
 	}
 
 	@Override
@@ -41,13 +49,25 @@ public class DepartmentAction extends CRUDAction<Department>{
 
 	@Override
 	protected void savee() {
+		if(id==null){
+			baseQuery.setCurrentPage(Integer.MAX_VALUE);
+		}
 		departmentService.saveOrUpdate(department);
 	}
 
 	@Override
-	protected void deletee() {
-		if(id!=null){
-			departmentService.delete(id);
+	protected void deletee() throws IOException {
+		HttpServletResponse response = ServletActionContext.getResponse();
+		response.setContentType("text/html;charset=UTF-8");
+		PrintWriter printWriter = response.getWriter();
+		try {
+			if(id!=null){
+				departmentService.delete(id);
+				printWriter.print("{\"success\":true,\"msg\":\"删除成功\"}");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			printWriter.print("{\"success\":false,\"msg\":\"删除失败"+e.getMessage()+"\"}");
 		}
 	}
 	//==================ModelDriven/Preparable=====================

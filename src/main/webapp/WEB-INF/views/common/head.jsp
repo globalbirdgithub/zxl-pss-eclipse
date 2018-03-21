@@ -10,8 +10,10 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/ace-rtl.min.css" />
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/ace-skins.min.css" />
 <!-- /.main-container -->
-<script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/jquery-1.10.2.min.js"></script>
-<script src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
-<script src="${pageContext.request.contextPath}/assets/js/typeahead-bs2.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/jquery-2.0.3.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/typeahead-bs2.min.js"></script>
 <!-- ace settings handler -->
-<script src="${pageContext.request.contextPath}/assets/js/ace-extra.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/ace-extra.min.js"></script>
+<!-- diy js -->
+<script type="text/javascript" src="js/common/common.js"></script>
