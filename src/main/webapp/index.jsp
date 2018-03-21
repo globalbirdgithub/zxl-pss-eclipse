@@ -1,3 +1,3 @@
 <%
-	response.sendRedirect("main.action");
+	response.sendRedirect("login.action");
 %>

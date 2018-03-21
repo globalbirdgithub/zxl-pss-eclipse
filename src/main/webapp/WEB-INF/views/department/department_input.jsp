@@ -50,7 +50,10 @@
 				<div class="col-xs-12">													       <!-- .col-xs-* 针对超小屏幕和中等屏幕设备所定义的类 -->
 					<!-- 页面内容开始 -->
 					<form class="form-horizontal" action="department_save.action" role="form"><!-- form-horizontal将 label标签和控件组水平并排布局 -->
-						<s:hidden name="id"/>																   <!-- 解决修改回显问题 -->
+						<s:hidden id="id" name="id"/>	
+						<s:hidden name="baseQuery.currentPage"/>
+						<s:hidden name="baseQuery.pageSize"/>
+						<s:hidden name="baseQuery.deptName"/>															   <!-- 解决修改回显问题 -->
 						<div class="form-group">								      <!-- 改变 .form-group 的行为，使其表现为栅格系统中的行（row）， -->
 							<label class="col-sm-3 control-label no-padding-right" for="form-field-1">部门名称 </label>
 							<div class="col-sm-9">											        <!-- .col-sm-栅格系统小屏幕 平板 (≥768px) -->
@@ -66,7 +69,7 @@
 									<button class="btn btn-success" type="button" onclick="clearForm()">
 									<i class="icon-refresh bigger-110"></i> 清空
 								</button>
-								<button class="btn btn-warning" type="cancel">
+								<button class="btn btn-warning" type="button" onclick="cancle()">
 									<i class="icon-undo bigger-110"></i> 取消
 								</button>
 							</div>

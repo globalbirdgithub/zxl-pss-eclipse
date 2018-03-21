@@ -1,8 +1,7 @@
 package com.share.pss.web.action;
+import java.io.IOException;
 import java.io.PrintWriter;
 
-import javax.servlet.ServletContext;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.struts2.ServletActionContext;
@@ -37,9 +36,9 @@ public class EmployeeAction extends CRUDAction<Employee>{
 		return pageList;
 	}
 	//Struts2管理 需要setter、getter
-	private EmployeeQuery employeeQuery = new EmployeeQuery();
-	public EmployeeQuery getEmployeeQuery() {
-		return employeeQuery;
+	private EmployeeQuery baseQuery = new EmployeeQuery();
+	public EmployeeQuery getBaseQuery() {
+		return baseQuery;
 	}
 	//Struts2管理 用于接收和回显前台数据，需要它在栈顶时才放到栈顶
 	private Employee employee;
@@ -48,7 +47,7 @@ public class EmployeeAction extends CRUDAction<Employee>{
 	//获取所有
 	@Override
 	protected void list() {
-		this.pageList = employeeService.findByQuery(employeeQuery);
+		this.pageList = employeeService.findByQuery(baseQuery);
 		putContext("allDepts", departmentService.getAll());
 	}
 	//新建/修改
@@ -64,13 +63,26 @@ public class EmployeeAction extends CRUDAction<Employee>{
 		if(department!=null && department.getId()==-1L){
 			employee.setDepartment(null);
 		}
+		//如果是新增用户，则新增后跳转到最后一页,将参数传递到list方法中
+		if(id==null){
+			baseQuery.setCurrentPage(Integer.MAX_VALUE);
+		}
 		employeeService.saveOrUpdate(employee);
 	}
-	//删除
+	//ajax删除
 	@Override
-	protected void deletee(){
-		if(id!=null){
-			employeeService.delete(id);
+	protected void deletee() throws IOException{
+		HttpServletResponse response = ServletActionContext.getResponse();
+		response.setContentType("text/html;charset=UTF-8");
+		PrintWriter printWriter = response.getWriter();
+		try {
+			if(id!=null){
+				employeeService.delete(id);
+				printWriter.print("{\"success\":true,\"msg\":\"删除成功\"}");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			printWriter.print("{\"success\":false,\"msg\":\"删除失败："+e.getMessage()+"\"}");
 		}
 	}
 	//接收前台用户名

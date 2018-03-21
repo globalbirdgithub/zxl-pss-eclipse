@@ -21,12 +21,25 @@
 			<result name="success" type="dispatcher">/WEB-INF/views/main.jsp</result>
 			<result name="right" type="dispatcher">/WEB-INF/views/main_right.jsp</result>
 		</action>
+		<!-- 登录功能登出功能 -->
+		<action name="login_*" class="loginAction" method="{1}">
+			<result name="success" type="redirectAction">main</result>
+			<result name="loginFail" type="dispatcher">/WEB-INF/views/login/login.jsp</result>
+			<result name="loginOut" type="dispatcher">/WEB-INF/views/login/login.jsp</result>
+		</action>
 		<!-- ①*代表访问的Action；②*代表访问的Action中的方法，默认execute() -->
 		<action name="*_*" class="{1}Action" method="{2}">
 			<result name="success" type="dispatcher">/WEB-INF/views/{1}/{1}.jsp</result>
 			<result name="input" type="dispatcher">/WEB-INF/views/{1}/{1}_input.jsp</result>
-			<result name="reload" type="redirectAction">{1}</result>
+			<result name="reload" type="redirectAction">
+				<param name="actionName">{1}</param>
+				<param name="baseQuery.currentPage">${baseQuery.currentPage}</param><!-- EL获取：新增后跳转最后一页+修改后跳转当前页 -->
+				<param name="baseQuery.pageSize">${baseQuery.pageSize}</param><!-- EL获取：修改/新增后位置每页显示条数 -->
+				<param name="baseQuery.userName">${baseQuery.userName}</param>
+				<param name="baseQuery.email">${baseQuery.email}</param>
+				<param name="baseQuery.deptId">${baseQuery.deptId}</param>
+				<param name="id">${id}</param><!-- EL获取：修改行变红色 -->
+			</result>
 		</action>
 	</package>
-
 </struts>

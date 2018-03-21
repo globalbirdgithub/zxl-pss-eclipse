@@ -7,16 +7,6 @@
 <title>部门</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <%@include file="/WEB-INF/views/common/head.jsp"%>
-<script type="text/javascript">
-	$(document).ready(function(){
-		$('#pageNum').keyup(function(){//监听用户键盘输入事件
-			this.value=this.value.replace(/\D/g,'');
-		});
-		$('#pageNum').pasteEvents = function(){//监听用户CTRL+V粘贴事件过滤字符
-			this.value=this.value.replace(/\D/g,'');
-		};
-	});
-</script>
 </head>
 <body>
 	<div class="main-content">
@@ -43,17 +33,17 @@
 						<div id="sample-table-2_wrapper" class="dataTables_wrapper" role="grid">
 						
 							<div class="row">
-								<form action="department.action" id="pageForm" method="post">
-									<div class="col-sm-6">
+								<form action="department.action" id="domainForm" method="post">
+									<div class="col-sm-4">
 										<div>
-											<label> 显示 <s:select list="{10,15,20}" name="departmentQuery.pageSize" onchange="javascript:$('#pageForm').submit();"></s:select></label>
-											跳转<input type="text" id="pageNum" name="departmentQuery.currentPage" value="${pageList.currentPage}" size="2" oncontextmenu="return false"/>
+											<label> 显示 <s:select list="{10,15,20}" name="baseQuery.pageSize" onchange="javascript:$('#domainForm').submit();"></s:select></label>
+											跳转<input type="text" id="pageNum" name="baseQuery.currentPage" value="${pageList.currentPage}" size="2" oncontextmenu="return false"/>
 											<button class="btn-pink" type="submit">GO</button>
 										</div>
 									</div>
-									<div class="col-sm-6">
-										<input type="text" placeholder="请输入部门名关键字..." name="departmentQuery.deptName" value="${departmentQuery.deptName}"/>
-										<a class="btn btn-xs btn-pink" href="#" onclick="javascript:$('#pageForm').submit();">
+									<div class="col-sm-8">
+										<input type="text" placeholder="请输入部门名关键字..." name="baseQuery.deptName" value="${baseQuery.deptName}"/>
+										<a class="btn btn-xs btn-pink" href="#" onclick="javascript:$('#domainForm').submit();">
 											 <i class="icon-search">搜索</i>
 										</a>
 										<a class="btn btn-xs btn-pink" href="department_input.action">
@@ -76,9 +66,14 @@
 										<th><i class="icon-time"></i>操作</th>
 									</tr>
 								</thead>
-								<tbody>
+								<tbody id="itemTbody">
 									<s:iterator value="pageList.rows">
+									<s:if test="id==#parameters.id[0]">
+										<tr style="color: red">
+									</s:if>
+									<s:else>
 										<tr>
+									</s:else>
 											<td class="center">
 												<label> 
 													<input type="checkbox" class="ace" /><span class="lbl"></span>
@@ -88,10 +83,10 @@
 											<td>${name}</td>
 											<td>
 												<div class="visible-md visible-lg hidden-sm hidden-xs action-buttons">
-													<a class="green" href="department_input.action?id=${id}">
+													<a class="green" href="#" onclick="updateDomain('department_input.action?id=${id}')">
 														<i class="icon-pencil bigger-130"></i>
 													</a> 
-													<a class="red" href="department_delete.action?id=${id}">
+													<a class="red" href="#" onclick="deleteDomain('department_delete.action?id=${id}',this)">
 														<i class="icon-trash bigger-130"></i>
 													</a>
 												</div>
@@ -101,22 +96,7 @@
 								</tbody>
 							</table>
 						
-							<div class="row">
-								<div class="col-sm-6">
-									<div id="sample-talbe-2_info" class="dataTables_info">显示${pageList.beginIndex}到${pageList.endIndex}共${pageList.totalCount}条</div>
-								</div>
-								<div class="col-sm-6">
-									<ul class="pagination pull-right no-margin">
-										<s:property value="pageList.goPage" escapeHtml="false"/>
-										<script type="text/javascript">
-											function goPage(number){
-												$('#pageNum').val(number);
-												$('#pageForm').submit();
-											}
-										</script>
-									</ul>
-								</div>
-							</div>
+							<%@ include file="/WEB-INF/views/common/page.jsp" %>
 								
 						</div><!-- /.modal-content -->
 					</div><!-- /.modal-dialog -->

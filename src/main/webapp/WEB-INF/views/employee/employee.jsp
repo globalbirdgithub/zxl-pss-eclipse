@@ -7,16 +7,6 @@
 <title>Employee</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <%@include file="/WEB-INF/views/common/head.jsp"%>
-<script type="text/javascript">
-	$(document).ready(function(){
-		$('#pageNum').keyup(function(){//监听用户键盘输入事件
-			this.value=this.value.replace(/\D/g,'');
-		});
-		$('#pageNum').pasteEvents = function(){//监听用户CTRL+V粘贴事件过滤字符
-			this.value=this.value.replace(/\D/g,'');
-		};
-	});
-</script>
 </head>
 <body>
 	<%-- <s:debug></s:debug> --%>
@@ -46,20 +36,20 @@
 						
 							<div class="row">
 								<form action="employee.action" id="domainForm" method="post">
-									<div class="col-sm-6">
+									<div class="col-sm-4">
 										<div>
-											<label> 显示 <s:select list="{10,20,30,40,50}" name="employeeQuery.pageSize" onchange="javascript:$('#domainForm').submit();"></s:select></label>
-											跳转<input type="text" id="pageNum" name="employeeQuery.currentPage" value="${pageList.currentPage}" size="2" oncontextmenu="return false" />
+											<label> 显示 <s:select list="{10,20,30,40,50}" name="baseQuery.pageSize" onchange="javascript:$('#domainForm').submit();"></s:select></label>
+											跳转<input type="text" id="pageNum" name="baseQuery.currentPage" value="${pageList.currentPage}" size="2" oncontextmenu="return false" />
 											<button class="btn-pink" type="submit">GO</button>
 										</div>
 									</div>
-									<div class="col-sm-6">
-										<input type="text" placeholder="请输入用户名关键字..." name="employeeQuery.username" value="${employeeQuery.username}" size="15"/>
-										<input type="text" placeholder="请输入邮箱关键字 ..." name="employeeQuery.email" value="${employeeQuery.email}" size="15"/> 
-										<s:select list="#allDepts" name="employeeQuery.deptId"  listKey="id" listValue="name" headerKey="-1" headerValue="---部门---"/>
-										<a class="btn btn-xs btn-pink" href="#" onclick="javascript:$('#domainForm').submit();">
+									<div class="col-sm-8">
+										<input type="text" placeholder="请输入用户名关键字..." name="baseQuery.username" value="${baseQuery.username}" size="15"/>
+										<input type="text" placeholder="请输入邮箱关键字 ..." name="baseQuery.email" value="${baseQuery.email}" size="15"/> 
+										<s:select list="#allDepts" name="baseQuery.deptId"  listKey="id" listValue="name" headerKey="-1" headerValue="---部门---"/>
+										<button class="btn btn-xs btn-pink" href="#" onclick="javascript:$('#domainForm').submit();">
 											 <i class="icon-search">搜索</i>
-										</a>
+										</button>
 										<a class="btn btn-xs btn-pink" href="employee_input.action">
 											<i class="icon-credit-card">新建</i>	
 										</a>
@@ -70,25 +60,30 @@
 							<table id="sample-table-2" class="table table-striped table-bordered table-hover">
 								<thead>
 									<tr>
-										<th class="center">
+										<th class="center" width="5%">
 											<label> 
 												<input type="checkbox" class="ace" /><span class="lbl"></span>
 											</label>
 										</th>
-										<th>编号</th>
-										<th>用户名</th>
-										<th>密码</th>
-										<th>邮箱</th>
-										<th>头像</th>
-										<th>年龄</th>
-										<th>部门名称</th>
-										<th>角色名称</th>
-										<th><i class="icon-time"></i>操作</th>
+										<th width="5%">编号</th>
+										<th width="10%">用户名</th>
+										<th width="10%">密码</th>
+										<th width="10%">邮箱</th>
+										<th width="10%">头像</th>
+										<th width="10%">年龄</th>
+										<th width="15%">部门名称</th>
+										<th width="10%">角色名称</th>
+										<th width="10%"><i class="icon-time"></i>操作</th>
 									</tr>
 								</thead>
-								<tbody>
+								<tbody id="itemTbody">
 									<s:iterator value="pageList.rows">
-										<tr>
+										<s:if test="id==#parameters.id[0]">
+											<tr style="color:red">
+										</s:if>
+										<s:else>
+											<tr>
+										</s:else>
 											<td class="center">
 												<label> 
 													<input type="checkbox" class="ace" /><span class="lbl"></span>
@@ -106,10 +101,10 @@
 											<td></td>
 											<td>
 												<div class="visible-md visible-lg hidden-sm hidden-xs action-buttons">
-													<a class="green" href="employee_input.action?id=${id}">
+													<a class="green" href="#" onclick="updateDomain('employee_input.action?id=${id}')">
 														<i class="icon-pencil bigger-130"></i>
 													</a> 
-													<a class="red" href="employee_delete.action?id=${id}">
+													<a class="red" href="#" onclick="deleteDomain('employee_delete.action?id=${id}',this)">
 														<i class="icon-trash bigger-130"></i>
 													</a>
 												</div>
@@ -119,22 +114,7 @@
 								</tbody>
 							</table>
 						
-							<div class="row">
-								<div class="col-sm-6">
-									<div id="sample-talbe-2_info" class="dataTables_info">显示${pageList.beginIndex}到${pageList.endIndex}共${pageList.totalCount}条</div>
-								</div>
-								<div class="col-sm-6">
-									<ul class="pagination pull-right no-margin">
-										<s:property value="pageList.goPage" escapeHtml="false"/>
-										<script type="text/javascript">
-											function goPage(number){
-												$('#pageNum').val(number);
-												$('#domainForm').submit();
-											}
-										</script>
-									</ul>
-								</div>
-							</div>
+							<%@ include file="/WEB-INF/views/common/page.jsp" %>
 								
 						</div><!-- /.modal-content -->
 					</div><!-- /.modal-dialog -->

@@ -86,4 +86,5 @@ http://www.springframework.org/schema/aop/spring-aop.xsd
 		<property name="departmentService" ref="departmentService" />
 	</bean>
 	<bean id="mainAction" class="com.share.pss.web.action.MainAction" scope="prototype"></bean>
+	<bean id="loginAction" class="com.share.pss.web.action.LoginAction" scope="prototype"></bean>
 </beans>

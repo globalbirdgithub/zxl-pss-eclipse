@@ -1,5 +1,7 @@
 package com.share.pss.web.action;
 
+import java.io.IOException;
+
 import com.opensymphony.xwork2.Action;
 import com.opensymphony.xwork2.ModelDriven;
 import com.opensymphony.xwork2.Preparable;
@@ -22,6 +24,7 @@ public abstract class CRUDAction<T> extends BaseAction implements ModelDriven<T>
 	}
 	//====================================Action方法=========================================
 	@Override //列表展示employee->EmployeeAction+execute
+	@InputConfig(methodName="execute")
 	public String execute() throws Exception {
 		list();
 		return SUCCESS;
@@ -43,9 +46,9 @@ public abstract class CRUDAction<T> extends BaseAction implements ModelDriven<T>
 	//删除 employee_delete->EmployeeAction+delete
 	public String delete() throws Exception{
 		deletee();
-		return RELOAD;
+		return null;
 	}
-	protected abstract void deletee();
+	protected abstract void deletee() throws IOException;
 	//==================================实现ModelDriven和Prepareable接口解决属性丢失问题========================
 	//Prepareable
 	@Override
