@@ -46,7 +46,7 @@
 			<div class="row">					       <!-- ===提示：①使用s标签的时候-获取和提交都可以只用name。②不用s标签时-获取需要EL表达式$，提交需要name=== -->
 				<div class="col-xs-12">													       <!-- .col-xs-* 针对超小屏幕和中等屏幕设备所定义的类 -->
 					<!-- 页面内容开始 -->
-					<form id="employeeFrom" class="form-horizontal" action="employee_save.action" role="form" method="post"><!-- form-horizontal将 label标签和控件组水平并排布局 -->
+					<form id="employeeForm" class="form-horizontal" action="employee_save.action" role="form" method="post"><!-- form-horizontal将 label标签和控件组水平并排布局 -->
 						<s:hidden id="userId" name="id"/>																   <!-- 解决修改回显问题 -->
 						<s:hidden name="baseQuery.currentPage"/>
 						<s:hidden name="baseQuery.pageSize"/>

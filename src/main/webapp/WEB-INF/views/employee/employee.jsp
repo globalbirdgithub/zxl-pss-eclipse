@@ -113,9 +113,8 @@
 									</s:iterator>
 								</tbody>
 							</table>
-						
 							<%@ include file="/WEB-INF/views/common/page.jsp" %>
-								
+							<%@ include file="/WEB-INF/views/common/modal.jsp" %>
 						</div><!-- /.modal-content -->
 					</div><!-- /.modal-dialog -->
 				</div><!-- /.col -->

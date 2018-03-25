@@ -45,4 +45,12 @@ function cancel(){
 	window.history.back();//获取浏览器缓存对象
 	location.href="employee.action";//很多人同时管理数据使用此方法，每次获取实时数据
 }
-
+//信息重置功能js
+function clearForm(){
+	$(':input','form')																	 //匹配所有 input, textarea, select 和 button 元素  
+	 .not(':button, :submit, :reset, :hidden') 															      //去除所有与给定选择器匹配的元素
+	 .val('')  																									 //获得/设置匹配元素的当前值
+	 .removeAttr('checked')  																				 //从每一个匹配的元素中删除一个属性
+	 .removeAttr('selected'); 
+	$('select').prop('selectedIndex', 0);						//选中'---请选择---',jquery1.6以下版本$('select').attr('selectedIndex', 0)
+}
