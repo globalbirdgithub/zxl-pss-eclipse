@@ -66,25 +66,5 @@ http://www.springframework.org/schema/aop/spring-aop.xsd
 		<aop:pointcut expression="execution(* com.share.pss.service.I*Service.*(..))" id="pointcut"/>
 		<aop:advisor advice-ref="txAdvice" pointcut-ref="pointcut"/>
 	</aop:config>
-	<!-- Dao持久层 -->
-	<bean id="baseDao" class="com.share.pss.dao.impl.BaseDaoImpl">
-		<property name="sessionFactory" ref="sessionFactory"/>
-	</bean>
-	<!-- Service业务层 -->
-	<bean id="employeeService" class="com.share.pss.service.impl.EmployeeServiceImpl">
-		<property name="baseDao" ref="baseDao" />
-	</bean>
-	<bean id="departmentService" class="com.share.pss.service.impl.DepartmentServiceImpl">
-		<property name="baseDao" ref="baseDao" />
-	</bean>
-	<!-- Action视图层 -->
-	<bean id="employeeAction" class="com.share.pss.web.action.EmployeeAction" scope="prototype">
-		<property name="employeeService" ref="employeeService" />
-		<property name="departmentService" ref="departmentService" />
-	</bean>
-	<bean id="departmentAction" class="com.share.pss.web.action.DepartmentAction" scope="prototype">
-		<property name="departmentService" ref="departmentService" />
-	</bean>
-	<bean id="mainAction" class="com.share.pss.web.action.MainAction" scope="prototype"></bean>
-	<bean id="loginAction" class="com.share.pss.web.action.LoginAction" scope="prototype"></bean>
+	<import resource="manager/*Context.xml"/>
 </beans>
