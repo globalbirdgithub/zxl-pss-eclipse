@@ -23,6 +23,7 @@ public class ${domain}ServiceTest extends BaseServiceTest{
 		for (${domain} ${domainLower} : all) {
 			System.out.println(${domainLower});
 		}
+		System.out.println(all.size());
 	}
 	@Test
 	public void testQuery() throws Exception {

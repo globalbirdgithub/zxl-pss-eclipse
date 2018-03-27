@@ -1,7 +1,5 @@
 package com.share.pss.service;
 
-import static org.junit.Assert.*;
-
 import java.util.List;
 
 import org.junit.Test;

@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.share.pss.domain">
+	<class name="Permission" table="permission">
+		<id name="id">
+			<generator class="native" />
+		</id>
+		<property name="name" column="name" type="string"/>
+		<property name="method" />
+		<!-- java中可使用数据库关键字作为属性名称，需对应数据库字段 -->
+		<property name="desc" column="descs" type="string" />
+	</class>
+</hibernate-mapping>
