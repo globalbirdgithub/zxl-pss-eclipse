@@ -11,6 +11,7 @@ import com.share.pss.domain.Permission;
 public class PermissionQuery extends BaseQuery {
 	// 高级查询参数
 	private String name;
+	private String method;
 
 	// 将类名Permission传递给父类的hql查询语句
 	public PermissionQuery() {
@@ -23,6 +24,9 @@ public class PermissionQuery extends BaseQuery {
 		if (StringUtils.isNoneBlank(name)) {
 			addCondition("o.name like ?", "%" + name + "%");
 		}
+		if (StringUtils.isNoneBlank(method)) {
+			addCondition("o.method like ?", "%" + method + "%");
+		}
 	}
 
 	// 以下setter/getter提供给Struts2使用
@@ -33,4 +37,13 @@ public class PermissionQuery extends BaseQuery {
 	public void setName(String name) {
 		this.name = name;
 	}
+
+	public String getMethod() {
+		return method;
+	}
+
+	public void setMethod(String method) {
+		this.method = method;
+	}
+
 }

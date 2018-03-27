@@ -45,6 +45,7 @@
 									</div>
 									<div class="col-sm-8">
 										<input type="text" placeholder="请输入名称..." name="baseQuery.name" value="${baseQuery.name}" size="15"/>
+										<input type="text" placeholder="请输入方法..." name="baseQuery.method" value="${baseQuery.method}" size="15"/>
 										<button class="btn btn-xs btn-pink" href="#" onclick="javascript:$('#domainForm').submit();">
 											 <i class="icon-search">搜索</i>
 										</button>
@@ -65,6 +66,7 @@
 										</th>
 										<th width="5%">编号</th>
 										<th width="10%">名称</th>
+										<th width="10%">方法</th>
 										<th width="10%"><i class="icon-time"></i>操作</th>
 									</tr>
 								</thead>
@@ -83,6 +85,7 @@
 											</td>
 											<td>${id}</td>
 											<td>${name}</td>
+											<td>${method}</td>
 											<td>
 												<div class="visible-md visible-lg hidden-sm hidden-xs action-buttons">
 													<a class="green" href="#" onclick="updateDomain('permission_input.action?id=${id}')">
