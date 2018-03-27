@@ -5,8 +5,8 @@ import java.util.List;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.share.pss.domain.Department;
-import com.share.pss.query.DepartmentQuery;
+import com.share.pss.domain.${domain};
+import com.share.pss.query.${domain}Query;
 import com.share.pss.query.PageList;
 
 /**
@@ -14,22 +14,22 @@ import com.share.pss.query.PageList;
  * @date 2017年10月31日 下午4:31:21
  * @version V1.0 测试类
  */
-public class DepartmentServiceTest extends BaseServiceTest{
+public class ${domain}ServiceTest extends BaseServiceTest{
 	@Autowired
-	IDepartmentService departmentService;
+	I${domain}Service ${domainLower}Service;
 	@Test
 	public void testCRUD() throws Exception {
-		List<Department> all = departmentService.getAll();
-		for (Department department : all) {
-			System.out.println(department);
+		List<${domain}> all = ${domainLower}Service.getAll();
+		for (${domain} ${domainLower} : all) {
+			System.out.println(${domainLower});
 		}
 	}
 	@Test
 	public void testQuery() throws Exception {
-		DepartmentQuery departmentQuery = new DepartmentQuery();
-		departmentQuery.setPageSize(15);
-		departmentQuery.setCurrentPage(2);
-		PageList pageList = departmentService.findByQuery(departmentQuery);
+		${domain}Query ${domainLower}Query = new ${domain}Query();
+		${domainLower}Query.setPageSize(15);
+		${domainLower}Query.setCurrentPage(2);
+		PageList pageList = ${domainLower}Service.findByQuery(${domainLower}Query);
 		System.out.println(pageList);
 	}
 }

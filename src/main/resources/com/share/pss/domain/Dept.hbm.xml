@@ -4,7 +4,7 @@
 	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping package="com.share.pss.domain">
-	<class name="${domain}" table="${domain.toLowerCase()}">
+	<class name="Dept" table="dept">
 		<id name="id">
 			<generator class="native" />
 		</id>

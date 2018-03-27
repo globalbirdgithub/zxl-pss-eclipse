@@ -16,10 +16,10 @@ http://www.springframework.org/schema/aop
 http://www.springframework.org/schema/aop/spring-aop.xsd
 ">	
 	<!-- Service业务层 -->
-	<bean id="${domainLower}Service" class="com.share.pss.service.impl.${domain}ServiceImpl" parent="baseService">
+	<bean id="deptService" class="com.share.pss.service.impl.DeptServiceImpl" parent="baseService">
 	</bean>
 	<!-- Action视图层 -->
-	<bean id="${domainLower}Action" class="com.share.pss.web.action.${domain}Action" scope="prototype">
-		<property name="${domainLower}Service" ref="${domainLower}Service" />
+	<bean id="deptAction" class="com.share.pss.web.action.DeptAction" scope="prototype">
+		<property name="deptService" ref="deptService" />
 	</bean>
 </beans>

@@ -4,7 +4,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<title>${domain}</title>
+<title>Dept</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <%@include file="/WEB-INF/views/common/head.jsp"%>
 </head>
@@ -30,12 +30,12 @@
 		<div class="page-content">
 			<div class="row">
 				<div class="col-xs-12">
-					<div class="table-header">${domain}列表</div>
+					<div class="table-header">Dept列表</div>
 					<div class="table-responsive">
 						<div id="sample-table-2_wrapper" class="dataTables_wrapper" role="grid">
 						
 							<div class="row">
-								<form action="${domainLower}.action" id="domainForm" method="post">
+								<form action="dept.action" id="domainForm" method="post">
 									<div class="col-sm-4">
 										<div>
 											<label> 显示 <s:select list="{10,20,30,40,50}" name="baseQuery.pageSize" onchange="javascript:$('#domainForm').submit();"></s:select></label>
@@ -48,7 +48,7 @@
 										<button class="btn btn-xs btn-pink" href="#" onclick="javascript:$('#domainForm').submit();">
 											 <i class="icon-search">搜索</i>
 										</button>
-										<a class="btn btn-xs btn-pink" href="${domainLower}_input.action">
+										<a class="btn btn-xs btn-pink" href="dept_input.action">
 											<i class="icon-credit-card">新建</i>	
 										</a>
 									</div>
@@ -85,10 +85,10 @@
 											<td>${name}</td>
 											<td>
 												<div class="visible-md visible-lg hidden-sm hidden-xs action-buttons">
-													<a class="green" href="#" onclick="updateDomain('${domainLower}_input.action?id=${id}')">
+													<a class="green" href="#" onclick="updateDomain('dept_input.action?id=${id}')">
 														<i class="icon-pencil bigger-130"></i>
 													</a> 
-													<a class="red" href="#" onclick="deleteDomain('${domainLower}_delete.action?id=${id}',this)">
+													<a class="red" href="#" onclick="deleteDomain('dept_delete.action?id=${id}',this)">
 														<i class="icon-trash bigger-130"></i>
 													</a>
 												</div>

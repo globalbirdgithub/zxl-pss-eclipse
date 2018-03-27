@@ -60,8 +60,8 @@
 								<input type="text" id="form-field-1" placeholder="请输入用户名..." value="${username}" name="username" class="col-xs-10 col-sm-5"/>
 							</div>
 						</div>
-						<div class="space-4"></div>
 						<s:if test="id==null"><!-- 只有新增才可以修改密码 -->
+							<div class="space-4"></div>
 							<div class="form-group">
 								<label class="col-sm-3 control-label no-padding-right" for="form-field-2">密码 </label>
 								<div class="col-sm-9">

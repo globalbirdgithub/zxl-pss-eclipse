@@ -4,22 +4,22 @@ import java.io.PrintWriter;
 
 import javax.servlet.http.HttpServletResponse;
 import org.apache.struts2.ServletActionContext;
-import com.share.pss.domain.${domain};
-import com.share.pss.query.${domain}Query;
+import com.share.pss.domain.Dept;
+import com.share.pss.query.DeptQuery;
 import com.share.pss.query.PageList;
-import com.share.pss.service.I${domain}Service;
+import com.share.pss.service.IDeptService;
 /**
  * @author MrZhang
  * @date 2017年11月1日 下午11:32:44
- * @version V1.0 表现层Action 访问Action的时候默认Action在栈顶，ModelDriven对应的拦截器检测到${domain}有值的时候将其压栈到栈顶
+ * @version V1.0 表现层Action 访问Action的时候默认Action在栈顶，ModelDriven对应的拦截器检测到Dept有值的时候将其压栈到栈顶
  * 													  Preparable对应的拦截器检测到要执行Action中的方法的时候就执行prepare()
  */
-public class ${domain}Action extends CRUDAction<${domain}>{
+public class DeptAction extends CRUDAction<Dept>{
 	private static final long serialVersionUID = 1L;
 	//Spring管理
-	private I${domain}Service ${domainLower}Service;
-	public void set${domain}Service(I${domain}Service ${domainLower}Service) {
-		this.${domainLower}Service = ${domainLower}Service;
+	private IDeptService deptService;
+	public void setDeptService(IDeptService deptService) {
+		this.deptService = deptService;
 	}
 	//Struts2管理 通过值栈(List/Map)向前台提供数据，
 	//List栈需要：属性+getter；Map栈需要：ActionContext.getContext.put(key,value)
@@ -28,18 +28,18 @@ public class ${domain}Action extends CRUDAction<${domain}>{
 		return pageList;
 	}
 	//Struts2管理 需要setter、getter
-	private ${domain}Query baseQuery = new ${domain}Query();
-	public ${domain}Query getBaseQuery() {
+	private DeptQuery baseQuery = new DeptQuery();
+	public DeptQuery getBaseQuery() {
 		return baseQuery;
 	}
 	//Struts2管理 用于接收和回显前台数据，需要它在栈顶时才放到栈顶
-	private ${domain} ${domainLower};
+	private Dept dept;
 	
 	//====================================Action方法=========================================
 	//获取所有
 	@Override
 	protected void list() {
-		this.pageList = ${domainLower}Service.findByQuery(baseQuery);
+		this.pageList = deptService.findByQuery(baseQuery);
 	}
 	//新建/修改
 	@Override
@@ -53,7 +53,7 @@ public class ${domain}Action extends CRUDAction<${domain}>{
 		if(id==null){
 			baseQuery.setCurrentPage(Integer.MAX_VALUE);
 		}
-		${domainLower}Service.saveOrUpdate(${domainLower});
+		deptService.saveOrUpdate(dept);
 	}
 	//ajax删除
 	@Override
@@ -63,7 +63,7 @@ public class ${domain}Action extends CRUDAction<${domain}>{
 		PrintWriter printWriter = response.getWriter();
 		try {
 			if(id!=null){
-				${domainLower}Service.delete(id);
+				deptService.delete(id);
 				printWriter.print("{\"success\":true,\"msg\":\"删除成功\"}");
 			}
 		} catch (Exception e) {
@@ -76,22 +76,22 @@ public class ${domain}Action extends CRUDAction<${domain}>{
 	protected void preparee() {
 	}
 	@Override
-	protected ${domain} getModell() {
-		return ${domainLower};
+	protected Dept getModell() {
+		return dept;
 	}
 	//=========================prepare拦截器对应的类PrepareInterceptor检测方法前缀prefix='prepare'通过反射调用=======
 	@Override
 	protected void prepareInputt(){
 		if(id!=null){
-			${domainLower} = ${domainLower}Service.get(id);//修改需要回显否则不需要(这时会压栈)
+			dept = deptService.get(id);//修改需要回显否则不需要(这时会压栈)
 		}
 	}
 	@Override
 	protected void prepareSavee() {
 		if(id==null){
-			${domainLower} = new ${domain}();
+			dept = new Dept();
 		}else{
-			${domainLower} = ${domainLower}Service.get(id);
+			dept = deptService.get(id);
 		}
 	}
 	@Override

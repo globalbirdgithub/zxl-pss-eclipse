@@ -7,6 +7,8 @@ import org.apache.velocity.VelocityContext;
 import org.apache.velocity.app.Velocity;
 import org.junit.Test;
 
+import com.share.pss.tool.VelocityMaker;
+
 /**Velocity模板测试
  * @author MrZhang 
  * @date 2018年3月25日 下午3:37:44
@@ -29,5 +31,9 @@ public class VelocityTest {
 		template.merge(velocityContext, stringWriter);
 		System.out.println(stringWriter);
 		stringWriter.close();
+	}
+	@Test
+	public void testN() throws Exception {
+		VelocityMaker.createCode();
 	}
 }

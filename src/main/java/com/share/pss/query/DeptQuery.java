@@ -1,20 +1,20 @@
 package com.share.pss.query;
 
 import org.apache.commons.lang3.StringUtils;
-import com.share.pss.domain.${domain};
+import com.share.pss.domain.Dept;
 
 /**
  * @author MrZhang
  * @date 2017年12月13日 上午2:36:19
  * @version V1.0 封装高级查询所需条件 用户名、部门、邮箱
  */
-public class ${domain}Query extends BaseQuery {
+public class DeptQuery extends BaseQuery {
 	// 高级查询参数
 	private String name;
 
-	// 将类名${domain}传递给父类的hql查询语句
-	public ${domain}Query() {
-		super(${domain}.class.getSimpleName());
+	// 将类名Dept传递给父类的hql查询语句
+	public DeptQuery() {
+		super(Dept.class.getSimpleName());
 	}
 
 	// 覆写父类抽象方法；传递具体高级查询参数给父类；
