@@ -20,6 +20,7 @@ public class VelocityMaker {
 	private static final String TEST = "src/test/java/";
 	private static final String RESOURCES = "src/main/resources/";
 	private static final String WEBAPP = "src/main/webapp/";
+	private static final boolean FLAG = false;//默认不覆盖
 	// 定义模型集合
 	private static String[] domains = { "Dept" };
 	// 定义输出文件名集合
@@ -67,6 +68,10 @@ public class VelocityMaker {
 					file = new File(files[j] + domainLowerCaseName + "/" + domainLowerCaseName + "_" + fileNames[j]);
 				} else if ("Context.xml".equals(fileNames[j])) {
 					file = new File(files[j] + domainLowerCaseName + fileNames[j]);
+				}
+				// 如果文件存在并且不覆盖
+				if (file.exists() && !FLAG) {
+					continue;
 				}
 				System.out.println(file.getAbsolutePath());
 				File parentFile = file.getParentFile();
