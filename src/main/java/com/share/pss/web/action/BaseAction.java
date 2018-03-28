@@ -1,5 +1,8 @@
 package com.share.pss.web.action;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -17,4 +20,6 @@ public abstract class BaseAction extends ActionSupport{
 	protected void putContext(String key, Object value) {
 		ActionContext.getContext().put(key, value);
 	}
+	//日志
+	Logger logger = LoggerFactory.getLogger(getClass());
 }

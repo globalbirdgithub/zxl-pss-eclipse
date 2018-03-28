@@ -104,7 +104,7 @@
 			<artifactId>xwork-core</artifactId>
 			<version>${struts.version}</version>
 		</dependency>
-		<!-- 日志 -->
+		<!-- 日志 适配器模式-->
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-api</artifactId>

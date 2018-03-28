@@ -61,6 +61,7 @@ public class EmployeeAction extends CRUDAction<Employee>{
 	//获取所有
 	@Override
 	protected void list() {
+		logger.debug("EmployeeAction日志");
 		this.pageList = employeeService.findByQuery(baseQuery);
 		putContext("allDepts", departmentService.getAll());
 	}
