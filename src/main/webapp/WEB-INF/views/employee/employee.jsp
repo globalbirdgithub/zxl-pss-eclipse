@@ -98,7 +98,16 @@
 											</td>
 											<td>${age}</td>
 											<td>${department.name}</td>
-											<td></td>
+											<td>
+												<s:iterator value="roles" status="sta">
+													<s:if test="#sta.last">
+														${name}
+													</s:if>
+													<s:else>
+														${name},
+													</s:else>
+												</s:iterator>
+											</td>
 											<td>
 												<div class="visible-md visible-lg hidden-sm hidden-xs action-buttons">
 													<a class="green" href="#" onclick="updateDomain('employee_input.action?id=${id}')">

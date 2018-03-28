@@ -1,6 +1,7 @@
 package com.share.pss.web.action;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Set;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -8,10 +9,12 @@ import org.apache.struts2.ServletActionContext;
 
 import com.share.pss.domain.Department;
 import com.share.pss.domain.Employee;
+import com.share.pss.domain.Role;
 import com.share.pss.query.EmployeeQuery;
 import com.share.pss.query.PageList;
 import com.share.pss.service.IDepartmentService;
 import com.share.pss.service.IEmployeeService;
+import com.share.pss.service.IRoleService;
 /**
  * @author MrZhang
  * @date 2017年11月1日 下午11:32:44
@@ -28,6 +31,17 @@ public class EmployeeAction extends CRUDAction<Employee>{
 	private IDepartmentService departmentService;
 	public void setDepartmentService(IDepartmentService departmentService) {
 		this.departmentService = departmentService;
+	}
+	private IRoleService roleService;
+	public void setRoleService(IRoleService roleService) {
+		this.roleService = roleService;
+	}
+	private Long[] ids;
+	public Long[] getIds() {
+		return ids;
+	}
+	public void setIds(Long[] ids) {
+		this.ids = ids;
 	}
 	//Struts2管理 通过值栈(List/Map)向前台提供数据，
 	//List栈需要：属性+getter；Map栈需要：ActionContext.getContext.put(key,value)
@@ -55,6 +69,7 @@ public class EmployeeAction extends CRUDAction<Employee>{
 	protected void inputt() {
 		/*留空*/
 		putContext("allDepts", departmentService.getAll());
+		putContext("allRoles", roleService.getAll());
 	}
 	//保存
 	@Override
@@ -62,6 +77,11 @@ public class EmployeeAction extends CRUDAction<Employee>{
 		Department department = employee.getDepartment();
 		if(department!=null && department.getId()==-1L){
 			employee.setDepartment(null);
+		}
+		if(ids!=null){
+			for (Long roleId : ids) {
+				employee.getRoles().add(new Role(roleId));
+			}
 		}
 		//如果是新增用户，则新增后跳转到最后一页,将参数传递到list方法中
 		if(id==null){
@@ -130,6 +150,12 @@ public class EmployeeAction extends CRUDAction<Employee>{
 	protected void prepareInputt(){
 		if(id!=null){
 			employee = employeeService.get(id);//修改需要回显否则不需要(这时会压栈)
+			Set<Role> roles = employee.getRoles();
+			ids = new Long[roles.size()];
+			int index =0;
+			for (Role role : roles) {
+				ids[index++] = role.getId();
+			}
 		}
 	}
 	@Override
@@ -138,8 +164,9 @@ public class EmployeeAction extends CRUDAction<Employee>{
 			employee = new Employee();
 		}else{
 			employee = employeeService.get(id);
+			employee.setDepartment(null);
+			employee.getRoles().clear();
 		}
-		employee.setDepartment(null);
 	}
 	@Override
 	protected void prepareDeletee() {

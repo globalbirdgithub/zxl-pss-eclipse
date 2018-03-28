@@ -97,6 +97,13 @@
 								<s:select list="#allDepts" name="department.id" listKey="id" listValue="name" headerKey="-1" headerValue="---请选择---" />
 							</div>
 						</div>
+						<div class="space-4"></div>
+						<div class="form-group">
+							<label class="col-sm-3 control-label no-padding-right" for="form-field-2">角色 </label>
+							<div class="col-sm-9">
+								<s:checkboxlist list="#allRoles" name="ids" listKey="id" listValue="name"/>
+							</div>
+						</div>
 						<!-- 按钮 -->
 						<div class="clearfix form-actions">														 <!-- clearfix响应式列重置 -->
 							<div class="col-md-offset-5">									  <!-- 使用 .col-md-offset-* 类可以将列向右侧偏移。 -->

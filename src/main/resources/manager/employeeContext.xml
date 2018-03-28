@@ -22,5 +22,6 @@ http://www.springframework.org/schema/aop/spring-aop.xsd
 	<bean id="employeeAction" class="com.share.pss.web.action.EmployeeAction" scope="prototype">
 		<property name="employeeService" ref="employeeService" />
 		<property name="departmentService" ref="departmentService" />
+		<property name="roleService" ref="roleService" />
 	</bean>
 </beans>

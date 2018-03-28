@@ -5,6 +5,7 @@ import java.util.Set;
 
 /**
  * 角色模型
+ * 
  * @author MrZhang
  * @date 2018年3月27日 下午12:55:56
  * @version V1.0
@@ -13,6 +14,13 @@ public class Role {
 	private Long id;
 	private String name;
 	private Set<Permission> permissions = new HashSet<>();
+
+	public Role() {
+	}
+
+	public Role(Long roleId) {
+		this.id = roleId;
+	}
 
 	public Long getId() {
 		return id;
@@ -38,4 +46,8 @@ public class Role {
 		this.permissions = permissions;
 	}
 
+	@Override
+	public String toString() {
+		return name;
+	}
 }
