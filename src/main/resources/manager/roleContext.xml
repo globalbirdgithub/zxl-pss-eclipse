@@ -21,5 +21,6 @@ http://www.springframework.org/schema/aop/spring-aop.xsd
 	<!-- Action视图层 -->
 	<bean id="roleAction" class="com.share.pss.web.action.RoleAction" scope="prototype">
 		<property name="roleService" ref="roleService" />
+		<property name="permissionService" ref="permissionService" />
 	</bean>
 </beans>

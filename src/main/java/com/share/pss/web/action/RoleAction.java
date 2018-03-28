@@ -1,12 +1,16 @@
 package com.share.pss.web.action;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Set;
 
 import javax.servlet.http.HttpServletResponse;
 import org.apache.struts2.ServletActionContext;
+
+import com.share.pss.domain.Permission;
 import com.share.pss.domain.Role;
 import com.share.pss.query.RoleQuery;
 import com.share.pss.query.PageList;
+import com.share.pss.service.IPermissionService;
 import com.share.pss.service.IRoleService;
 /**
  * @author MrZhang
@@ -18,8 +22,20 @@ public class RoleAction extends CRUDAction<Role>{
 	private static final long serialVersionUID = 1L;
 	//Spring管理
 	private IRoleService roleService;
+	private IPermissionService permissionService;
 	public void setRoleService(IRoleService roleService) {
 		this.roleService = roleService;
+	}
+	public void setPermissionService(IPermissionService permissionService) {
+		this.permissionService = permissionService;
+	}
+	//接收前台多选权限Struts2管理
+	private Long[] ids;
+	public Long[] getIds() {
+		return ids;
+	}
+	public void setIds(Long[] ids) {
+		this.ids = ids;
 	}
 	//Struts2管理 通过值栈(List/Map)向前台提供数据，
 	//List栈需要：属性+getter；Map栈需要：ActionContext.getContext.put(key,value)
@@ -45,10 +61,17 @@ public class RoleAction extends CRUDAction<Role>{
 	@Override
 	protected void inputt() {
 		/*留空*/
+		putContext("allPermissions", permissionService.getAll());
 	}
 	//保存
 	@Override
 	protected void savee() {
+		//保存中间表
+		if(ids!=null){
+			for (Long perId : ids) {
+				role.getPermissions().add(new Permission(perId));//提高效率
+			}
+		}
 		//如果是新增用户，则新增后跳转到最后一页,将参数传递到list方法中
 		if(id==null){
 			baseQuery.setCurrentPage(Integer.MAX_VALUE);
@@ -84,14 +107,21 @@ public class RoleAction extends CRUDAction<Role>{
 	protected void prepareInputt(){
 		if(id!=null){
 			role = roleService.get(id);//修改需要回显否则不需要(这时会压栈)
+			Set<Permission> permissions = role.getPermissions();
+			ids = new Long[permissions.size()];
+			int index = 0;
+			for (Permission permission : permissions) {
+				ids[index++] = permission.getId();
+			}
 		}
 	}
 	@Override
 	protected void prepareSavee() {
 		if(id==null){
-			role = new Role();
+			role = new Role();//新增后的保存
 		}else{
-			role = roleService.get(id);
+			role = roleService.get(id);//修改后的保存
+			role.getPermissions().clear();
 		}
 	}
 	@Override

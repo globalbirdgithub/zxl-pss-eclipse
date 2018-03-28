@@ -1,5 +1,4 @@
 package com.share.pss.domain;
-
 /**
  * 权限模型
  * @author MrZhang
@@ -12,8 +11,15 @@ public class Permission {
 	// RoleAction.execute 拦截execute方法
 	private Long id;
 	private String name;
-	private String method;//方法
-	private String desc;//描述
+	private String method;// 方法
+	private String desc;// 描述
+
+	public Permission() {
+	}
+
+	public Permission(Long perId) {
+		this.id = perId;
+	}
 
 	public Long getId() {
 		return id;

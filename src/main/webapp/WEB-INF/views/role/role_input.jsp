@@ -52,9 +52,16 @@
 						<s:hidden name="baseQuery.pageSize"/>
 						<div class="space-4"></div>
 						<div class="form-group">								      <!-- 改变 .form-group 的行为，使其表现为栅格系统中的行（row）， -->
-							<label class="col-sm-3 control-label no-padding-right" for="form-field-1">名称 </label>
+							<label class="col-sm-3 control-label no-padding-right" for="form-field-1">角色</label>
 							<div class="col-sm-9">											        <!-- .col-sm-栅格系统小屏幕 平板 (≥768px) -->
-								<input type="text" id="form-field-1" placeholder="请输入名称..." value="${name}" name="name" class="col-xs-10 col-sm-5"/>
+								<input type="text" id="form-field-1" placeholder="请输入角色名称..." value="${name}" name="name" class="col-xs-10 col-sm-5"/>
+							</div>
+						</div>
+						<div class="space-4"></div>
+						<div class="form-group">								      <!-- 改变 .form-group 的行为，使其表现为栅格系统中的行（row）， -->
+							<label class="col-sm-3 control-label no-padding-right" for="form-field-1">权限 </label>
+							<div class="col-sm-9">											        <!-- .col-sm-栅格系统小屏幕 平板 (≥768px) -->
+								<s:checkboxlist list="#allPermissions" name="ids" listKey="id" listValue="name" />
 							</div>
 						</div>
 						<!-- 按钮 -->
