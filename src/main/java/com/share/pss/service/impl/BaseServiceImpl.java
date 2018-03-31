@@ -9,7 +9,6 @@ import com.share.pss.dao.IBaseDao;
 import com.share.pss.query.BaseQuery;
 import com.share.pss.query.PageList;
 import com.share.pss.service.IBaseService;
-
 /**
  * @author MrZhang
  * @date 2017年10月31日 下午12:07:58

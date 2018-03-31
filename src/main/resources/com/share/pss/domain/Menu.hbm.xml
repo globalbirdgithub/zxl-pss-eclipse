@@ -4,18 +4,13 @@
 	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping package="com.share.pss.domain">
-	<class name="Role" table="role">
+	<class name="Menu" table="menu">
 		<id name="id">
 			<generator class="native" />
 		</id>
 		<property name="name" column="name" type="string"/>
-		<set name="permissions" table="role_permission">
-			<key column="role_id"/>
-			<many-to-many class="Permission" column="permission_id"/>
-		</set>
-		<set name="menus" table="role_menu">
-			<key column="role_id"/>
-			<many-to-many class="Menu" column="menu_id"/>
-		</set>
+		<property name="url" column="url" type="string"/>
+		<property name="icon" column="icon" type="string"/>
+		<many-to-one name="parent" column="parent_id" class="Menu"/>
 	</class>
 </hibernate-mapping>

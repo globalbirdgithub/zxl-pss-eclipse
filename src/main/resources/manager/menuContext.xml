@@ -15,17 +15,11 @@ http://www.springframework.org/schema/tx/spring-tx.xsd
 http://www.springframework.org/schema/aop
 http://www.springframework.org/schema/aop/spring-aop.xsd
 ">	
-	<!-- Dao持久层 -->
-	<bean id="baseDao" class="com.share.pss.dao.impl.BaseDaoImpl">
-		<property name="sessionFactory" ref="sessionFactory"/>
+	<!-- Service业务层 -->
+	<bean id="menuService" class="com.share.pss.service.impl.MenuServiceImpl" parent="baseService">
 	</bean>
-	<!-- Service -->
-	<bean id="baseService" abstract="true">
-		<property name="baseDao" ref="baseDao"/>
+	<!-- Action视图层 -->
+	<bean id="menuAction" class="com.share.pss.web.action.MenuAction" scope="prototype">
+		<property name="menuService" ref="menuService" />
 	</bean>
-	<!-- Action -->
-	<bean id="mainAction" class="com.share.pss.web.action.MainAction" scope="prototype">
-		<property name="menuService" ref="menuService"/>
-	</bean>
-	<bean id="loginAction" class="com.share.pss.web.action.LoginAction" scope="prototype"></bean>
 </beans>

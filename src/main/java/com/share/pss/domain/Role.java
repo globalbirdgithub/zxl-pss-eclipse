@@ -14,6 +14,7 @@ public class Role {
 	private Long id;
 	private String name;
 	private Set<Permission> permissions = new HashSet<>();
+	private Set<Menu> menus = new HashSet<>();
 
 	public Role() {
 	}
@@ -44,6 +45,14 @@ public class Role {
 
 	public void setPermissions(Set<Permission> permissions) {
 		this.permissions = permissions;
+	}
+
+	public Set<Menu> getMenus() {
+		return menus;
+	}
+
+	public void setMenus(Set<Menu> menus) {
+		this.menus = menus;
 	}
 
 	@Override
