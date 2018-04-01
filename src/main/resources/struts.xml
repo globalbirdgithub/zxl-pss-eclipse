@@ -13,19 +13,27 @@
 	<package name="default" namespace="/" extends="struts-default">
 		<!-- 默认拦截器栈修改为二次参数绑定拦截器栈-->
 		<default-interceptor-ref name="paramsPrepareParamsStack" />
-		<!-- <global-results> -->
-		<!-- <result name="error">/WEB-INF/jsp/error.jsp</result> -->
-		<!-- </global-results> -->
+		<!-- 全局视图 -->
+		<global-results>
+			<result name="login" type="dispatcher">/WEB-INF/views/login/login.jsp</result>
+			<result name="main" type="redirectAction">main</result>
+		</global-results>
+		
 		<!-- 主页跳转，注意action顺序 -->
 		<action name="main_*" class="mainAction" method="{1}">
 			<result name="success" type="dispatcher">/WEB-INF/views/main.jsp</result>
 			<result name="right" type="dispatcher">/WEB-INF/views/main_right.jsp</result>
 		</action>
+		
 		<!-- 登录功能登出功能 -->
-		<action name="login_*" class="loginAction" method="{1}">
-			<result name="success" type="redirectAction">main</result>
-			<result name="loginFail" type="dispatcher">/WEB-INF/views/login/login.jsp</result>
-			<result name="loginOut" type="dispatcher">/WEB-INF/views/login/login.jsp</result>
+		<action name="login_*" class="loginAction" method="{1}"/>
+		<!-- 验证码 -->
+		<action name="securityCodeImage" class="SecurityCodeImageAction" method="execute">
+			<result name="success" type="stream">
+				<param name="contentType">image/jpeg</param>
+				<param name="inputName">byteArrayInputStream</param>
+				<param name="bufferSize">2048</param>
+			</result>
 		</action>
 		<!-- ①*代表访问的Action；②*代表访问的Action中的方法，默认execute() -->
 		<action name="*_*" class="{1}Action" method="{2}">

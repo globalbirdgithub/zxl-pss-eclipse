@@ -1,5 +1,7 @@
 package com.share.pss.web.action;
 
+import com.opensymphony.xwork2.ActionContext;
+import com.share.pss.domain.Employee;
 import com.share.pss.service.IMenuService;
 
 /**
@@ -16,7 +18,8 @@ public class MainAction extends BaseAction{
 	//后台主页
 	@Override
 	public String execute() throws Exception {
-		putContext("menus", menuService.findMenuByLoginUser(1L));
+		Employee loginUser = (Employee)ActionContext.getContext().getSession().get(USER_IN_SESSION);
+		putContext("menus", menuService.findMenuByLoginUser(loginUser.getId()));
 		return SUCCESS;
 	}
 	//主页框架右侧页面访问

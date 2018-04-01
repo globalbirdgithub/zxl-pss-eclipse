@@ -21,4 +21,14 @@ public class EmployeeServiceImpl extends BaseServiceImpl<Employee> implements IE
 		}
 		return true;
 	}
+	//处理登录请求
+	@Override
+	public Employee findByLoginUser(String username, String password) {
+		String hql = "select o from Employee o where o.username=? and o.password=?";
+		List<Employee> employees = baseDao.findByHql(hql, username,password);
+		if(employees.size()>0){//登录成功
+			return employees.get(0);
+		}
+		return null;
+	}
 }
