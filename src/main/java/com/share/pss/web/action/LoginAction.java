@@ -1,6 +1,8 @@
 package com.share.pss.web.action;
 
 import org.apache.commons.lang3.StringUtils;
+import org.apache.struts2.ServletActionContext;
+
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.interceptor.annotations.InputConfig;
 import com.share.pss.domain.Employee;
@@ -53,7 +55,7 @@ public class LoginAction extends BaseAction{
 			ActionContext.getContext().getSession().put(USER_IN_SESSION, loginUser);
 			return "main";
 		}else{
-			addActionError("登录失败");
+			addActionError("用户名或密码错误");
 			return LOGIN;
 		}
 	}
@@ -72,5 +74,11 @@ public class LoginAction extends BaseAction{
 		if(!sessionCode.equals(securityCode)){
 			addFieldError("securityCode","验证码错误");
 		}
+	}
+	//注销
+	public String logout() throws Exception{
+		//ActionContext.getContext().getSession().clear();
+		ServletActionContext.getRequest().getSession().removeAttribute(USER_IN_SESSION);
+		return LOGIN;
 	}
 }
