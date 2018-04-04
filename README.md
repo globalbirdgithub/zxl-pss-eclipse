@@ -21,3 +21,5 @@
     day6
     1.动态菜单
     2.登录功能
+    3.权限拦截器AuthInterceptor
+    ...
