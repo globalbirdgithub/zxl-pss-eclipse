@@ -71,6 +71,7 @@ public class LoginAction extends BaseAction{
 			addFieldError("password", "请输入密码");
 		}
 		String sessionCode = (String)ActionContext.getContext().getSession().get(SESSION_SECURITY_CODE);
+		sessionCode += "";
 		if(!sessionCode.equals(securityCode)){
 			addFieldError("securityCode","验证码错误");
 		}

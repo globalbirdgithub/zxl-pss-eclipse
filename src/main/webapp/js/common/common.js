@@ -21,24 +21,38 @@ $(document).ready(function(){
 //ajax删除
 function deleteDomain(url,src){
 	$.post(url,function(data){
-		if(data.success){
-			if($('#itemTbody tr').size()<2){
-				$("#domainForm").submit();
+		if(data instanceof Object){
+			if(data.success){
+				if($('#itemTbody tr').size()<2){
+					$("#domainForm").submit();
+				}else{
+					$(src).closest('tr').remove();
+					$("#end").html($("#end").html()-1);
+					$("#total").html($("#total").html()-1);
+				}
+				$(".modal-body").html(data.msg);
+				$('#myModal').modal({
+				    backdrop:true,
+				    keyboard:true,
+				    show:true
+				});
 			}else{
-				$(src).closest('tr').remove();
-				$("#end").html($("#end").html()-1);
-				$("#total").html($("#total").html()-1);
+				$(".modal-body").html(data.msg);
+				$('#myModal').modal({
+				    backdrop:true,
+				    keyboard:true,
+				    show:true
+				});
 			}
-			alert("删除成功");
 		}else{
-			$(".modal-body").html(data.msg);
+			$(".modal-body").html("没有权限");
 			$('#myModal').modal({
 			    backdrop:true,
 			    keyboard:true,
 			    show:true
 			});
 		}
-	},'json');
+	});
 }
 //取消修改/新建
 function cancel(){

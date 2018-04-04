@@ -94,7 +94,7 @@ public class EmployeeAction extends CRUDAction<Employee>{
 	@Override
 	protected void deletee() throws IOException{
 		HttpServletResponse response = ServletActionContext.getResponse();
-		response.setContentType("text/html;charset=UTF-8");
+		response.setContentType("text/json;charset=UTF-8");
 		PrintWriter printWriter = response.getWriter();
 		try {
 			if(id!=null){

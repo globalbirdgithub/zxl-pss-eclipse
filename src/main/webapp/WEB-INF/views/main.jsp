@@ -171,11 +171,12 @@
 							</a></li>
 						</ul></li>
 
-					<li class="light-blue"><a data-toggle="dropdown" href="#"
-						class="dropdown-toggle"> <img class="nav-user-photo"
-							src="assets/avatars/user.jpg" alt="Jason's Photo" /> <span
-							class="user-info"> <small>欢迎光临,</small> Jason
-						</span> <i class="icon-caret-down"></i>
+					<li class="light-blue"><a data-toggle="dropdown" href="#" class="dropdown-toggle"> 
+						<img class="nav-user-photo" src="${sessionScope.userInSession.headImage}" alt="${sessionScope.userInSession.username}"/> 
+						<span class="user-info"> 
+							<small>欢迎光临,</small> ${sessionScope.userInSession.username}
+						</span> 
+						<i class="icon-caret-down"></i>
 					</a>
 
 						<ul

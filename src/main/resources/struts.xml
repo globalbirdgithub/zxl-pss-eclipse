@@ -8,7 +8,6 @@
 	<constant name="struts.devMode" value="true" />
 	<!-- 防止*.css,*.js,*.png静态资源访问OpenSessionInViewFilter -->
 	<constant name="struts.action.extension" value="action" />
-	<!-- 需要登录拦截 -->
 	<package name="default" namespace="/" extends="struts-default">
 		<interceptors>
 			<interceptor name="authInterceptor" class="com.share.pss.web.action.interceptor.AuthInterceptor">
@@ -25,6 +24,7 @@
 		<global-results>
 			<result name="login" type="dispatcher">/WEB-INF/views/login/login.jsp</result>
 			<result name="main" type="redirectAction">main</result>
+			<result name="noAuth" type="dispatcher">/WEB-INF/views/login/noAuth.html</result>
 		</global-results>
 		<!-- 主页跳转，注意action顺序 -->
 		<action name="main_*" class="mainAction" method="{1}">
