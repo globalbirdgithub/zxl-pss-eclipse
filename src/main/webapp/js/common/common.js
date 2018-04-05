@@ -68,3 +68,9 @@ function clearForm(){
 	 .removeAttr('selected'); 
 	$('select').prop('selectedIndex', 0);						//选中'---请选择---',jquery1.6以下版本$('select').attr('selectedIndex', 0)
 }
+//下载Excel文件
+function downloadDomain(domain){
+	$("#domainForm").attr("action",domain+"_download.action");
+	$("#domainForm").submit();
+	$("#domainForm").attr("action",domain+".action");
+}

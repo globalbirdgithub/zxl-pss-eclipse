@@ -44,7 +44,7 @@
 
 										<div class="space-5"></div>
 
-										<form action="login_check.action" id="loginForm" method="post" autocomplete="on">
+										<form action="login_login.action" id="loginForm" method="post" autocomplete="on">
 											<fieldset>
 												<s:fielderror id="fielderror" style="color:red"/><s:actionerror id="actionerror" style="color:red"/>
 												<label class="block clearfix"> 

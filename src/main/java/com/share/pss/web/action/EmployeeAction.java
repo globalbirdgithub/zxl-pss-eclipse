@@ -1,5 +1,8 @@
 package com.share.pss.web.action;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.PrintWriter;
 import java.util.Set;
 
@@ -56,7 +59,11 @@ public class EmployeeAction extends CRUDAction<Employee>{
 	}
 	//Struts2管理 用于接收和回显前台数据，需要它在栈顶时才放到栈顶
 	private Employee employee;
-	
+	//用于domain excel下载
+	private InputStream fileInputStream;
+	public InputStream getFileInputStream() {
+		return fileInputStream;
+	}
 	//====================================Action方法=========================================
 	//获取所有
 	@Override
@@ -137,6 +144,11 @@ public class EmployeeAction extends CRUDAction<Employee>{
 			}
 		}
 		return NONE;
+	}
+	//下载Excel文件
+	public String download()throws Exception{
+		this.fileInputStream = new FileInputStream(new File("C:\\Users\\Administrator\\Desktop\\test.xlsx"));
+		return "download";
 	}
 	//==================================实现ModelDriven和Prepareable接口解决属性丢失问题========================
 	@Override

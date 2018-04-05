@@ -12,6 +12,7 @@ import com.share.pss.service.IEmployeeService;
  * @date 2018年3月12日 下午10:46:22
  * @version V1.0
  */
+@SuppressWarnings("serial")
 public class LoginAction extends BaseAction{
 	private String username;
 	private String password;
@@ -49,7 +50,7 @@ public class LoginAction extends BaseAction{
 	 * 2018年3月31日下午11:58:39
 	 */
 	@InputConfig(resultName=LOGIN)
-	public String check() throws Exception{
+	public String login() throws Exception{
 		Employee loginUser = employeeService.findByLoginUser(username, password);
 		if(loginUser!=null){
 			ActionContext.getContext().getSession().put(USER_IN_SESSION, loginUser);
@@ -63,7 +64,7 @@ public class LoginAction extends BaseAction{
 	 *  void
 	 * 2018年3月31日下午11:54:16
 	 */
-	public void validateCheck(){
+	public void validateLogin(){
 		if(StringUtils.isBlank(username)){
 			addFieldError("username", "请输入用户名");
 		}
@@ -77,9 +78,9 @@ public class LoginAction extends BaseAction{
 		}
 	}
 	//注销
-	public String logout() throws Exception{
-		//ActionContext.getContext().getSession().clear();
+	public String logout() throws Exception {
+		// ActionContext.getContext().getSession().clear();
 		ServletActionContext.getRequest().getSession().removeAttribute(USER_IN_SESSION);
-		return LOGIN;
+		return "login";
 	}
 }

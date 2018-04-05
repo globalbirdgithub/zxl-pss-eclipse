@@ -53,6 +53,7 @@
 										<a class="btn btn-xs btn-pink" href="employee_input.action">
 											<i class="icon-credit-card">新建</i>	
 										</a>
+										<a class="btn btn-xs btn-info" href="#" onclick="downloadDomain('employee')">导出Excel文件</a>
 									</div>
 								</form>
 							</div>
