@@ -22,4 +22,12 @@
     1.动态菜单
     2.登录功能
     3.权限拦截器AuthInterceptor
+    -登录拦截
+    -优化struts.xml
+    -资源权限
+    -Ajax删除无权限提示
+    day7
+    1.Excel下载
+    -下载静态Excel
+    -POI操作Excel
     ...

@@ -1,9 +1,22 @@
 package com.share.pss.service.impl;
 
+import java.io.ByteArrayInputStream;
+import java.io.FileOutputStream;
+import java.io.InputStream;
 import java.io.Serializable;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
+import java.util.Date;
 import java.util.List;
+
+import org.apache.commons.io.output.ByteArrayOutputStream;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.CellStyle;
+import org.apache.poi.ss.usermodel.CreationHelper;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import com.share.pss.dao.IBaseDao;
 import com.share.pss.query.BaseQuery;
@@ -61,6 +74,38 @@ public abstract class BaseServiceImpl<T> implements IBaseService<T> {
 	@Override
 	public PageList findByQuery(BaseQuery baseQuery) {
 		return baseDao.findByQuery(baseQuery);
+	}
+	/**下载Excel文件
+	 * @param list 数据集合
+	 * @param heads 表头，标题
+	 * @return 
+	 * @throws Exception InputStream
+	 * 2018年4月7日上午10:36:54
+	 */
+	@Override
+	public InputStream download(List<String[]> list,String[] heads) throws Exception {
+		Workbook wb = new XSSFWorkbook();
+		Sheet sheet = wb.createSheet("sheet0");
+		//表头
+		Row row0 = sheet.createRow(0);
+		for (int i = 0; i < heads.length; i++) {
+			Cell cell = row0.createCell(i);
+			cell.setCellValue(heads[i]);
+		}
+		//数据
+		for (int i = 0; i < list.size(); i++) {
+			Row row = sheet.createRow(i+1);
+			String[] strings = list.get(i);
+			for (int j = 0; j < strings.length; j++) {
+				Cell cell = row.createCell(j);
+				cell.setCellValue(strings[j]);
+			}
+		}
+		ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+		wb.write(byteArrayOutputStream);
+		byte[] byteArray = byteArrayOutputStream.toByteArray();
+		ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(byteArray);
+		return byteArrayInputStream;
 	}
 
 }

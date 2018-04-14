@@ -1,7 +1,10 @@
 package com.share.pss.web.action;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -69,6 +72,27 @@ public class DepartmentAction extends CRUDAction<Department>{
 			e.printStackTrace();
 			printWriter.print("{\"success\":false,\"msg\":\"删除失败"+e.getMessage()+"\"}");
 		}
+	}
+	//用于domain excel下载
+	private InputStream fileInputStream;
+	public InputStream getFileInputStream() {
+		return fileInputStream;
+	}
+	public String download()throws Exception{
+		String[] heads = {"部门编号","部门名称"};
+		baseQuery.setPageSize(Integer.MAX_VALUE);
+		PageList pageList = departmentService.findByQuery(baseQuery);
+		List<Department> rows = pageList.getRows();
+		List<String[]> list = new ArrayList<>();
+		for (Department department : rows) {
+			String[] strings = new String[heads.length];
+			strings[0] = department.getId().toString();
+			strings[1] = department.getName().toString();
+			list.add(strings);
+		}
+		InputStream inputStream = departmentService.download(list, heads);
+		this.fileInputStream = inputStream;
+		return "download";
 	}
 	//==================ModelDriven/Preparable=====================
 	@Override
