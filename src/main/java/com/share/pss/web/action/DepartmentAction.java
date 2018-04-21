@@ -3,6 +3,7 @@ package com.share.pss.web.action;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -77,6 +78,10 @@ public class DepartmentAction extends CRUDAction<Department>{
 	private InputStream fileInputStream;
 	public InputStream getFileInputStream() {
 		return fileInputStream;
+	}
+	//下载文件名
+	public String getFileName()throws UnsupportedEncodingException{
+		return new String("部门列表.xlsx".getBytes("GBK"),"ISO8859-1");
 	}
 	public String download()throws Exception{
 		String[] heads = {"部门编号","部门名称"};

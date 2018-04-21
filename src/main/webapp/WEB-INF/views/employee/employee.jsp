@@ -11,7 +11,6 @@
 <body>
 	<%-- <s:debug></s:debug> --%>
 	<div class="main-content">
-	
 		<div class="breadcrumbs" id="breadcrumbs">
 			<script type="text/javascript">
 				try {
@@ -58,7 +57,7 @@
 								</form>
 							</div>
 							
-							<table id="sample-table-2" class="table table-striped table-bordered table-hover">
+							<table id="sample-table-2" class="table table-striped table-bordered table-hover dataTable">
 								<thead>
 									<tr>
 										<th class="center" width="5%">
@@ -123,6 +122,7 @@
 									</s:iterator>
 								</tbody>
 							</table>
+							
 							<%@ include file="/WEB-INF/views/common/page.jsp" %>
 							<%@ include file="/WEB-INF/views/common/modal.jsp" %>
 						</div><!-- /.modal-content -->

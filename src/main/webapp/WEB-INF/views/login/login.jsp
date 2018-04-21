@@ -16,6 +16,11 @@
 <link rel="stylesheet" href="assets/css/ace-rtl.min.css" />
 <link rel="stylesheet" href="plugins/particles/style.css" />
 <script type="text/javascript" src="assets/js/jquery-2.0.3.min.js"></script>
+<script type="text/javascript">
+	if (top != window) {
+		top.location.href = window.location.href;
+	}
+</script>
 </head>
 <body id="particles-js" class="login-layout">
 	<div class="main-container">
