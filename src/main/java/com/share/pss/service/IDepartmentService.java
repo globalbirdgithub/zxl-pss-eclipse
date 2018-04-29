@@ -8,5 +8,6 @@ import com.share.pss.domain.Department;
  * @version V1.0 业务层接口
  */
 public interface IDepartmentService extends IBaseService<Department>{
-	
+
+	Department findeptByName(String string);
 }

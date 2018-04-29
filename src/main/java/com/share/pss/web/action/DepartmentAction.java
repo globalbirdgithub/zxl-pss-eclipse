@@ -95,7 +95,7 @@ public class DepartmentAction extends CRUDAction<Department>{
 			strings[1] = department.getName().toString();
 			list.add(strings);
 		}
-		InputStream inputStream = departmentService.download(list, heads);
+		InputStream inputStream = departmentService.downloadExcel(list, heads);
 		this.fileInputStream = inputStream;
 		return "download";
 	}

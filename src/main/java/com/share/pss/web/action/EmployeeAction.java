@@ -166,7 +166,7 @@ public class EmployeeAction extends CRUDAction<Employee>{
 			strings[4] = employee.getDepartment() == null ? "":employee.getDepartment().getName().toString();
 			list.add(strings);
 		}
-		InputStream inputStream = employeeService.download(list,heads);
+		InputStream inputStream = employeeService.downloadExcel(list,heads);
 		this.fileInputStream = inputStream;
 		return "download";
 	}

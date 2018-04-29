@@ -31,4 +31,8 @@ http://www.springframework.org/schema/aop/spring-aop.xsd
 		<property name="employeeService" ref="employeeService" />
 	</bean>
 	<bean id="SecurityCodeImageAction" class="com.share.pss.web.action.SecurityCodeImageAction" scope="prototype"/>
-</beans>
+	<bean id="excelImportAction" class="com.share.pss.web.action.ExcelImportAction" scope="prototype">
+		<property name="employeeService" ref="employeeService" />
+		<property name="departmentService" ref="departmentService" />
+	</bean>
+</beans> 

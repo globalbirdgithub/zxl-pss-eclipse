@@ -37,6 +37,10 @@
 			<result name="success" type="dispatcher">/WEB-INF/views/main.jsp</result>
 			<result name="right" type="dispatcher">/WEB-INF/views/main_right.jsp</result>
 		</action>
+		<!-- 导入 -->
+		<action name="excelImport_*" class="excelImportAction" method="{1}">
+			<result name="success" type="dispatcher">/WEB-INF/views/import.jsp</result>
+		</action>
 		<!-- 登录退出 -->
 		<action name="login_*" class="loginAction" method="{1}"/>
 		<!-- 验证码 -->

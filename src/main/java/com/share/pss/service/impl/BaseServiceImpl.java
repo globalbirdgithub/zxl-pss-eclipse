@@ -1,11 +1,14 @@
 package com.share.pss.service.impl;
 
 import java.io.ByteArrayInputStream;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.Serializable;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -16,6 +19,9 @@ import org.apache.poi.ss.usermodel.CreationHelper;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.xssf.usermodel.XSSFCell;
+import org.apache.poi.xssf.usermodel.XSSFRow;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import com.share.pss.dao.IBaseDao;
@@ -83,7 +89,7 @@ public abstract class BaseServiceImpl<T> implements IBaseService<T> {
 	 * 2018年4月7日上午10:36:54
 	 */
 	@Override
-	public InputStream download(List<String[]> list,String[] heads) throws Exception {
+	public InputStream downloadExcel(List<String[]> list,String[] heads) throws Exception {
 		Workbook wb = new XSSFWorkbook();
 		Sheet sheet = wb.createSheet("sheet0");
 		//表头
@@ -106,6 +112,32 @@ public abstract class BaseServiceImpl<T> implements IBaseService<T> {
 		byte[] byteArray = byteArrayOutputStream.toByteArray();
 		ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(byteArray);
 		return byteArrayInputStream;
+	}
+	/**
+	 * 读取Excel文件
+	 */
+	@Override
+	public List<String[]> importExcel(File uploadFile) throws Exception {
+		List<String[]> list = new ArrayList<>();
+		FileInputStream fileInputStream = new FileInputStream(uploadFile);
+		XSSFWorkbook workbook = new XSSFWorkbook(fileInputStream);
+		XSSFSheet sheet = workbook.getSheetAt(0);
+		int rowNum = sheet.getLastRowNum();
+		for (int i = 1; i <= rowNum; i++) {
+			XSSFRow row = sheet.getRow(i);
+			if(row!=null){
+				short cellNum = row.getLastCellNum();
+				String[] strings = new String[cellNum];
+				for (int j = 0; j <= cellNum; j++) {
+					XSSFCell cell = row.getCell(j);
+					if(cell!=null){
+						strings[j] = cell.getStringCellValue();
+					}
+				}
+				list.add(strings);
+			}
+		}
+		return list;
 	}
 
 }
