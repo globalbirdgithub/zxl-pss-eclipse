@@ -15,6 +15,12 @@
 <link rel="stylesheet" href="assets/css/ace.min.css" />
 <link rel="stylesheet" href="assets/css/ace-rtl.min.css" />
 <link rel="stylesheet" href="plugins/particles/style.css" />
+<script type="text/javascript" src="assets/js/jquery-2.0.3.min.js"></script>
+<script type="text/javascript">
+	if (top != window) {
+		top.location.href = window.location.href;
+	}
+</script>
 </head>
 <body id="particles-js" class="login-layout">
 	<div class="main-container">
@@ -41,25 +47,38 @@
 											<i class="icon-coffee green"></i> 用户登录
 										</h4>
 
-										<div class="space-6"></div>
+										<div class="space-5"></div>
 
-										<form action="login.action" id="loginForm" method="post" autocomplete="on">
+										<form action="login_login.action" id="loginForm" method="post" autocomplete="on">
 											<fieldset>
+												<s:fielderror id="fielderror" style="color:red"/><s:actionerror id="actionerror" style="color:red"/>
 												<label class="block clearfix"> 
 													<span class="block input-icon input-icon-right"> 
 														<input name="username" type="text" class="form-control" placeholder="用户名" />
 														<i class="icon-user"></i>
 													</span>
 												</label> 
-												<label class="block clearfix"> 
+												<label class="block formclearfix"> 
 													<span class="block input-icon input-icon-right"> 
 													<input name="password" type="password" class="form-control" placeholder="密码" /> 
 													<i class="icon-lock"></i>
 												</span>
 												</label>
+													
+												<div class="space-3"></div>
 
-												<div class="space"></div>
-
+												<img alt="看不清，换一张" src="securityCodeImage.action" id="verify" style="cursor:hand;"/>
+												<input type="text" name="securityCode" size="5" placeholder="验证码"/>
+												<script type="text/javascript">
+													$(function(){  
+														//点击图片更换验证码
+														$("#verify").click(function(){
+															$(this).attr("src","securityCodeImage.action?timestamp="+new Date().getTime());
+														});
+													});
+												</script>
+												<div class="space-4"></div>
+												
 												<div class="clearfix">
 													<label class="inline"> 
 														<input type="checkbox" class="ace" /> 
@@ -71,7 +90,8 @@
 													</button>
 												</div>
 
-												<div class="space-4"></div>
+												<div class="space-3"></div>
+												
 											</fieldset>
 										</form>
 

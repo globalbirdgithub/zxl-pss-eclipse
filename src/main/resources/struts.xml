@@ -4,28 +4,59 @@
 	"http://struts.apache.org/dtds/struts-2.3.dtd">
 
 <struts>
-
 	<constant name="struts.enable.DynamicMethodInvocation" value="false" />
 	<constant name="struts.devMode" value="true" />
 	<!-- 防止*.css,*.js,*.png静态资源访问OpenSessionInViewFilter -->
 	<constant name="struts.action.extension" value="action" />
-
-	<package name="default" namespace="/" extends="struts-default">
-		<!-- 默认拦截器栈修改为二次参数绑定拦截器栈-->
-		<default-interceptor-ref name="paramsPrepareParamsStack" />
-		<!-- <global-results> -->
-		<!-- <result name="error">/WEB-INF/jsp/error.jsp</result> -->
-		<!-- </global-results> -->
+	<package name="default" namespace="/" extends="struts-default,json-default">
+		<interceptors>
+			<interceptor name="authInterceptor" class="com.share.pss.web.action.interceptor.AuthInterceptor">
+				<param name="excludeActions">LoginAction,SecurityCodeImageAction</param>
+			</interceptor>
+			<interceptor-stack name="pssInterceptorStack">
+				<interceptor-ref name="authInterceptor" />
+				<interceptor-ref name="paramsPrepareParamsStack" />
+			</interceptor-stack>
+		</interceptors>
+		<!-- 默认拦截器栈 -->
+		<default-interceptor-ref name="pssInterceptorStack" />
+		<!-- 全局视图 -->
+		<global-results>
+			<result name="login" type="dispatcher">/WEB-INF/views/login/login.jsp</result>
+			<result name="main" type="redirectAction">main</result>
+			<result name="noAuth" type="dispatcher">/WEB-INF/views/login/noAuth.html</result>
+			<result name="download" type="stream">                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
+				<param name="contentType">application/vnd.openxmlformats-officedocument.spreadsheetml.sheet</param>
+				<param name="inputName">fileInputStream</param>
+				<param name="contentDisposition">filename=${fileName}</param>
+				<param name="buffersize">4096</param>
+			</result>
+			<result name="typeJsonResult" type="json">
+				<!-- 2.默认输出当前action的get方法的内容 -->
+				<!-- 3.修改指定输出的对象 -->
+				<param name="root">#productChilrenTypes</param>
+				<!-- 4.排除空的属性不输出 -->
+				<param name="excludeNullProperties">true</param>
+			</result>
+		</global-results>
 		<!-- 主页跳转，注意action顺序 -->
 		<action name="main_*" class="mainAction" method="{1}">
 			<result name="success" type="dispatcher">/WEB-INF/views/main.jsp</result>
 			<result name="right" type="dispatcher">/WEB-INF/views/main_right.jsp</result>
 		</action>
-		<!-- 登录功能登出功能 -->
-		<action name="login_*" class="loginAction" method="{1}">
-			<result name="success" type="redirectAction">main</result>
-			<result name="loginFail" type="dispatcher">/WEB-INF/views/login/login.jsp</result>
-			<result name="loginOut" type="dispatcher">/WEB-INF/views/login/login.jsp</result>
+		<!-- 导入 -->
+		<action name="excelImport_*" class="excelImportAction" method="{1}">
+			<result name="success" type="dispatcher">/WEB-INF/views/import.jsp</result>
+		</action>
+		<!-- 登录退出 -->
+		<action name="login_*" class="loginAction" method="{1}"/>
+		<!-- 验证码 -->
+		<action name="securityCodeImage" class="SecurityCodeImageAction" method="execute">
+			<result name="success" type="stream">
+				<param name="contentType">image/jpeg</param>
+				<param name="inputName">byteArrayInputStream</param>
+				<param name="bufferSize">2048</param>
+			</result>
 		</action>
 		<!-- ①*代表访问的Action；②*代表访问的Action中的方法，默认execute() -->
 		<action name="*_*" class="{1}Action" method="{2}">

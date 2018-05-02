@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="
+http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans.xsd
+http://www.springframework.org/schema/context
+http://www.springframework.org/schema/context/spring-context.xsd
+http://www.springframework.org/schema/tx
+http://www.springframework.org/schema/tx/spring-tx.xsd
+http://www.springframework.org/schema/aop
+http://www.springframework.org/schema/aop/spring-aop.xsd
+">	
+	<!-- Dao持久层 -->
+	<bean id="baseDao" class="com.share.pss.dao.impl.BaseDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	<!-- Service -->
+	<bean id="baseService" abstract="true">
+		<property name="baseDao" ref="baseDao"/>
+	</bean>
+	<!-- Action -->
+	<bean id="mainAction" class="com.share.pss.web.action.MainAction" scope="prototype">
+		<property name="menuService" ref="menuService"/>
+	</bean>
+	<bean id="loginAction" class="com.share.pss.web.action.LoginAction" scope="prototype">
+		<property name="employeeService" ref="employeeService" />
+	</bean>
+	<bean id="SecurityCodeImageAction" class="com.share.pss.web.action.SecurityCodeImageAction" scope="prototype"/>
+	<bean id="excelImportAction" class="com.share.pss.web.action.ExcelImportAction" scope="prototype">
+		<property name="employeeService" ref="employeeService" />
+		<property name="departmentService" ref="departmentService" />
+	</bean>
+</beans> 

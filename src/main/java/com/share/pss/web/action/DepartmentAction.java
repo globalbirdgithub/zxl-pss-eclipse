@@ -1,7 +1,11 @@
 package com.share.pss.web.action;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -58,7 +62,7 @@ public class DepartmentAction extends CRUDAction<Department>{
 	@Override
 	protected void deletee() throws IOException {
 		HttpServletResponse response = ServletActionContext.getResponse();
-		response.setContentType("text/html;charset=UTF-8");
+		response.setContentType("text/json;charset=UTF-8");
 		PrintWriter printWriter = response.getWriter();
 		try {
 			if(id!=null){
@@ -69,6 +73,31 @@ public class DepartmentAction extends CRUDAction<Department>{
 			e.printStackTrace();
 			printWriter.print("{\"success\":false,\"msg\":\"删除失败"+e.getMessage()+"\"}");
 		}
+	}
+	//用于domain excel下载
+	private InputStream fileInputStream;
+	public InputStream getFileInputStream() {
+		return fileInputStream;
+	}
+	//下载文件名
+	public String getFileName()throws UnsupportedEncodingException{
+		return new String("部门列表.xlsx".getBytes("GBK"),"ISO8859-1");
+	}
+	public String download()throws Exception{
+		String[] heads = {"部门编号","部门名称"};
+		baseQuery.setPageSize(Integer.MAX_VALUE);
+		PageList pageList = departmentService.findByQuery(baseQuery);
+		List<Department> rows = pageList.getRows();
+		List<String[]> list = new ArrayList<>();
+		for (Department department : rows) {
+			String[] strings = new String[heads.length];
+			strings[0] = department.getId().toString();
+			strings[1] = department.getName().toString();
+			list.add(strings);
+		}
+		InputStream inputStream = departmentService.downloadExcel(list, heads);
+		this.fileInputStream = inputStream;
+		return "download";
 	}
 	//==================ModelDriven/Preparable=====================
 	@Override

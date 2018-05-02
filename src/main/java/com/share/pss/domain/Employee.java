@@ -1,5 +1,8 @@
 package com.share.pss.domain;
 
+import java.util.HashSet;
+import java.util.Set;
+
 /**
  * @author MrZhang
  * @date 2017年10月31日 下午12:26:17
@@ -13,6 +16,7 @@ public class Employee {
 	private String headImage;
 	private Integer age;
 	private Department department;// 多对一：多个员工一个部门
+	private Set<Role> roles = new HashSet<>();
 
 	public Long getId() {
 		return id;
@@ -68,6 +72,14 @@ public class Employee {
 
 	public void setDepartment(Department department) {
 		this.department = department;
+	}
+
+	public Set<Role> getRoles() {
+		return roles;
+	}
+
+	public void setRoles(Set<Role> roles) {
+		this.roles = roles;
 	}
 
 }

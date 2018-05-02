@@ -21,28 +21,56 @@ $(document).ready(function(){
 //ajax删除
 function deleteDomain(url,src){
 	$.post(url,function(data){
-		if(data.success){
-			if($('#itemTbody tr').size()<2){
-				$("#domainForm").submit();
+		if(data instanceof Object){
+			if(data.success){
+				if($('#itemTbody tr').size()<2){
+					$("#domainForm").submit();
+				}else{
+					$(src).closest('tr').remove();
+					$("#end").html($("#end").html()-1);
+					$("#total").html($("#total").html()-1);
+				}
+				$(".modal-body").html(data.msg);
+				$('#myModal').modal({
+				    backdrop:true,
+				    keyboard:true,
+				    show:true
+				});
 			}else{
-				$(src).closest('tr').remove();
-				$("#end").html($("#end").html()-1);
-				$("#total").html($("#total").html()-1);
+				$(".modal-body").html(data.msg);
+				$('#myModal').modal({
+				    backdrop:true,
+				    keyboard:true,
+				    show:true
+				});
 			}
-			alert("删除成功");
 		}else{
-			$(".modal-body").html(data.msg);
+			$(".modal-body").html("没有权限");
 			$('#myModal').modal({
 			    backdrop:true,
 			    keyboard:true,
 			    show:true
 			});
 		}
-	},'json');
+	});
 }
 //取消修改/新建
-function cancel(){
+function cancel(domain){
 	window.history.back();//获取浏览器缓存对象
-	location.href="employee.action";//很多人同时管理数据使用此方法，每次获取实时数据
+	location.href=domain+".action";//很多人同时管理数据使用此方法，每次获取实时数据
 }
-
+//信息重置功能js
+function clearForm(){
+	$(':input','form')																	 //匹配所有 input, textarea, select 和 button 元素  
+	 .not(':button, :submit, :reset, :hidden') 															      //去除所有与给定选择器匹配的元素
+	 .val('')  																									 //获得/设置匹配元素的当前值
+	 .removeAttr('checked')  																				 //从每一个匹配的元素中删除一个属性
+	 .removeAttr('selected'); 
+	$('select').prop('selectedIndex', 0);						//选中'---请选择---',jquery1.6以下版本$('select').attr('selectedIndex', 0)
+}
+//下载Excel文件
+function downloadDomain(domain){
+	$("#domainForm").attr("action",domain+"_download.action");
+	$("#domainForm").submit();
+	$("#domainForm").attr("action",domain+".action");
+}

@@ -5,18 +5,15 @@
 <html>
 <head>
 <%@ include file="/WEB-INF/views/common/head.jsp"%>
+<!-- 引入validator验证插件 -->
+<link rel="stylesheet" href="plugins/validator/css/bootstrapValidator.min.css"/>
+<script type="text/javascript" src="plugins/validator/js/bootstrapValidator.js"></script>
+<!-- validator国际化（默认英文，下面的会覆盖上面的） -->
+<script type="text/javascript" src="plugins/validator/js/language/zh_CN.js"></script>
+<!-- 自定义模型js -->
+<script type="text/javascript" src="js/model/department.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<script type="text/javascript">
-	function clearForm(){
-		$(':input','form')																	 //匹配所有 input, textarea, select 和 button 元素  
-		 .not(':button, :submit, :reset, :hidden') 															      //去除所有与给定选择器匹配的元素
-		 .val('')  																									 //获得/设置匹配元素的当前值
-		 .removeAttr('checked')  																				 //从每一个匹配的元素中删除一个属性
-		 .removeAttr('selected'); 
-		$('select').prop('selectedIndex', 0);						//选中'---请选择---',jquery1.6以下版本$('select').attr('selectedIndex', 0)
-	}																			   //jquery1.6或以上版本$('select').prop('selectedIndex', 0)
-</script>
 </head>
 <body>
 	<div class="main-content">
@@ -49,7 +46,7 @@
 			<div class="row">					       <!-- ===提示：①使用s标签的时候-获取和提交都可以只用name。②不用s标签时-获取需要EL表达式$，提交需要name=== -->
 				<div class="col-xs-12">													       <!-- .col-xs-* 针对超小屏幕和中等屏幕设备所定义的类 -->
 					<!-- 页面内容开始 -->
-					<form class="form-horizontal" action="department_save.action" role="form"><!-- form-horizontal将 label标签和控件组水平并排布局 -->
+					<form id="departmentForm" class="form-horizontal" action="department_save.action" role="form"><!-- form-horizontal将 label标签和控件组水平并排布局 -->
 						<s:hidden id="id" name="id"/>	
 						<s:hidden name="baseQuery.currentPage"/>
 						<s:hidden name="baseQuery.pageSize"/>

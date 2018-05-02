@@ -1,0 +1,295 @@
+2018-03-25 15:49:52,524 - Log4JLogChute initialized using file 'velocity.log'
+2018-03-25 15:49:52,559 - Starting Apache Velocity v1.6 (compiled: 2008-11-24 15:58:18)
+2018-03-25 15:49:52,559 - Default Properties File: org\apache\velocity\runtime\defaults\velocity.properties
+2018-03-25 15:49:52,559 - Trying to use logger class org.apache.velocity.runtime.log.AvalonLogChute
+2018-03-25 15:49:52,559 - Target log system for org.apache.velocity.runtime.log.AvalonLogChute is not available (java.lang.NoClassDefFoundError: org/apache/log/format/Formatter).  Falling back to next log system...
+2018-03-25 15:49:52,559 - Trying to use logger class org.apache.velocity.runtime.log.Log4JLogChute
+2018-03-25 15:49:52,559 - Using logger class org.apache.velocity.runtime.log.Log4JLogChute
+2018-03-25 15:49:52,583 - ResourceLoader instantiated: org.apache.velocity.runtime.resource.loader.FileResourceLoader
+2018-03-25 15:49:52,585 - Do unicode file recognition:  false
+2018-03-25 15:49:52,585 - FileResourceLoader : adding path '.'
+2018-03-25 15:49:52,631 - ResourceCache: initialized (class org.apache.velocity.runtime.resource.ResourceCacheImpl) with class java.util.Collections$SynchronizedMap cache map.
+2018-03-25 15:49:52,633 - Loaded System Directive: org.apache.velocity.runtime.directive.Define
+2018-03-25 15:49:52,635 - Loaded System Directive: org.apache.velocity.runtime.directive.Break
+2018-03-25 15:49:52,636 - Loaded System Directive: org.apache.velocity.runtime.directive.Evaluate
+2018-03-25 15:49:52,637 - Loaded System Directive: org.apache.velocity.runtime.directive.Literal
+2018-03-25 15:49:52,639 - Loaded System Directive: org.apache.velocity.runtime.directive.Macro
+2018-03-25 15:49:52,641 - Loaded System Directive: org.apache.velocity.runtime.directive.Parse
+2018-03-25 15:49:52,644 - Loaded System Directive: org.apache.velocity.runtime.directive.Include
+2018-03-25 15:49:52,646 - Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
+2018-03-25 15:49:52,695 - Created '20' parsers.
+2018-03-25 15:49:52,703 - Velocimacro : "velocimacro.library" is not set.  Trying default library: VM_global_library.vm
+2018-03-25 15:49:52,703 - Velocimacro : Default library not found.
+2018-03-25 15:49:52,704 - Velocimacro : allowInline = true : VMs can be defined inline in templates
+2018-03-25 15:49:52,704 - Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
+2018-03-25 15:49:52,704 - Velocimacro : allowInlineLocal = false : VMs defined inline will be global in scope if allowed.
+2018-03-25 15:49:52,704 - Velocimacro : autoload off : VM system will not automatically reload global library macros
+2018-03-25 15:49:52,739 - ResourceManager : found velocityTemplate/hello.html with loader org.apache.velocity.runtime.resource.loader.FileResourceLoader
+2018-03-27 10:01:11,213 - Log4JLogChute initialized using file 'velocity.log'
+2018-03-27 10:01:11,248 - Starting Apache Velocity v1.6 (compiled: 2008-11-24 15:58:18)
+2018-03-27 10:01:11,248 - Default Properties File: org\apache\velocity\runtime\defaults\velocity.properties
+2018-03-27 10:01:11,248 - Trying to use logger class org.apache.velocity.runtime.log.AvalonLogChute
+2018-03-27 10:01:11,248 - Target log system for org.apache.velocity.runtime.log.AvalonLogChute is not available (java.lang.NoClassDefFoundError: org/apache/log/format/Formatter).  Falling back to next log system...
+2018-03-27 10:01:11,248 - Trying to use logger class org.apache.velocity.runtime.log.Log4JLogChute
+2018-03-27 10:01:11,248 - Using logger class org.apache.velocity.runtime.log.Log4JLogChute
+2018-03-27 10:01:11,274 - ResourceLoader instantiated: org.apache.velocity.runtime.resource.loader.FileResourceLoader
+2018-03-27 10:01:11,276 - Do unicode file recognition:  false
+2018-03-27 10:01:11,276 - FileResourceLoader : adding path '.'
+2018-03-27 10:01:11,306 - ResourceCache: initialized (class org.apache.velocity.runtime.resource.ResourceCacheImpl) with class java.util.Collections$SynchronizedMap cache map.
+2018-03-27 10:01:11,308 - Loaded System Directive: org.apache.velocity.runtime.directive.Define
+2018-03-27 10:01:11,309 - Loaded System Directive: org.apache.velocity.runtime.directive.Break
+2018-03-27 10:01:11,310 - Loaded System Directive: org.apache.velocity.runtime.directive.Evaluate
+2018-03-27 10:01:11,310 - Loaded System Directive: org.apache.velocity.runtime.directive.Literal
+2018-03-27 10:01:11,312 - Loaded System Directive: org.apache.velocity.runtime.directive.Macro
+2018-03-27 10:01:11,314 - Loaded System Directive: org.apache.velocity.runtime.directive.Parse
+2018-03-27 10:01:11,316 - Loaded System Directive: org.apache.velocity.runtime.directive.Include
+2018-03-27 10:01:11,317 - Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
+2018-03-27 10:01:11,364 - Created '20' parsers.
+2018-03-27 10:01:11,374 - Velocimacro : "velocimacro.library" is not set.  Trying default library: VM_global_library.vm
+2018-03-27 10:01:11,374 - Velocimacro : Default library not found.
+2018-03-27 10:01:11,374 - Velocimacro : allowInline = true : VMs can be defined inline in templates
+2018-03-27 10:01:11,374 - Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
+2018-03-27 10:01:11,375 - Velocimacro : allowInlineLocal = false : VMs defined inline will be global in scope if allowed.
+2018-03-27 10:01:11,375 - Velocimacro : autoload off : VM system will not automatically reload global library macros
+2018-03-27 10:01:11,381 - ResourceManager : found velocityTemplate/IDomainService.java with loader org.apache.velocity.runtime.resource.loader.FileResourceLoader
+2018-03-27 10:01:11,384 - ResourceManager : found velocityTemplate/DomainServiceImpl.java with loader org.apache.velocity.runtime.resource.loader.FileResourceLoader
+2018-03-27 10:01:11,386 - ResourceManager : found velocityTemplate/DomainServiceTest.java with loader org.apache.velocity.runtime.resource.loader.FileResourceLoader
+2018-03-27 10:01:11,389 - ResourceManager : found velocityTemplate/DomainQuery.java with loader org.apache.velocity.runtime.resource.loader.FileResourceLoader
+2018-03-27 10:01:11,394 - ResourceManager : found velocityTemplate/DomainAction.java with loader org.apache.velocity.runtime.resource.loader.FileResourceLoader
+2018-03-27 10:01:11,396 - ResourceManager : found velocityTemplate/Domain.hbm.xml with loader org.apache.velocity.runtime.resource.loader.FileResourceLoader
+2018-03-27 10:01:11,399 - ResourceManager : found velocityTemplate/domainContext.xml with loader org.apache.velocity.runtime.resource.loader.FileResourceLoader
+2018-03-27 10:01:11,513 - ResourceManager : found velocityTemplate/domain.js with loader org.apache.velocity.runtime.resource.loader.FileResourceLoader
+2018-03-27 10:01:11,527 - ResourceManager : found velocityTemplate/domain.jsp with loader org.apache.velocity.runtime.resource.loader.FileResourceLoader
+2018-03-27 10:01:11,533 - Null reference [template 'velocityTemplate/domain.jsp', line 42, column 159] : ${pageList.currentPage} cannot be resolved.
+2018-03-27 10:01:11,533 - Null reference [template 'velocityTemplate/domain.jsp', line 47, column 160] : ${baseQuery.username} cannot be resolved.
+2018-03-27 10:01:11,533 - Null reference [template 'velocityTemplate/domain.jsp', line 48, column 157] : ${baseQuery.email} cannot be resolved.
+2018-03-27 10:01:11,533 - Null reference [template 'velocityTemplate/domain.jsp', line 92, column 93] : ${id} cannot be resolved.
+2018-03-27 10:01:11,533 - Null reference [template 'velocityTemplate/domain.jsp', line 93, column 93] : ${username} cannot be resolved.
+2018-03-27 10:01:11,533 - Null reference [template 'velocityTemplate/domain.jsp', line 94, column 93] : ${password} cannot be resolved.
+2018-03-27 10:01:11,533 - Null reference [template 'velocityTemplate/domain.jsp', line 95, column 93] : ${email} cannot be resolved.
+2018-03-27 10:01:11,533 - Null reference [template 'velocityTemplate/domain.jsp', line 97, column 118] : ${headImage} cannot be resolved.
+2018-03-27 10:01:11,533 - Null reference [template 'velocityTemplate/domain.jsp', line 99, column 93] : ${age} cannot be resolved.
+2018-03-27 10:01:11,534 - Null reference [template 'velocityTemplate/domain.jsp', line 100, column 93] : ${department.name} cannot be resolved.
+2018-03-27 10:01:11,534 - Null reference [template 'velocityTemplate/domain.jsp', line 104, column 179] : ${id} cannot be resolved.
+2018-03-27 10:01:11,534 - Null reference [template 'velocityTemplate/domain.jsp', line 107, column 178] : ${id} cannot be resolved.
+2018-03-27 10:01:11,552 - ResourceManager : found velocityTemplate/domain_input.jsp with loader org.apache.velocity.runtime.resource.loader.FileResourceLoader
+2018-03-27 10:01:11,553 - Null reference [template 'velocityTemplate/domain_input.jsp', line 60, column 133] : ${username} cannot be resolved.
+2018-03-27 10:01:11,553 - Null reference [template 'velocityTemplate/domain_input.jsp', line 68, column 144] : ${password} cannot be resolved.
+2018-03-27 10:01:11,553 - Null reference [template 'velocityTemplate/domain_input.jsp', line 83, column 132] : ${email} cannot be resolved.
+2018-03-27 10:01:11,554 - Null reference [template 'velocityTemplate/domain_input.jsp', line 90, column 132] : ${age} cannot be resolved.
+2018-03-27 10:37:25,115 - Log4JLogChute initialized using file 'velocity.log'
+2018-03-27 10:37:25,116 - Starting Apache Velocity v1.6 (compiled: 2008-11-24 15:58:18)
+2018-03-27 10:37:25,116 - Default Properties File: org\apache\velocity\runtime\defaults\velocity.properties
+2018-03-27 10:37:25,116 - Trying to use logger class org.apache.velocity.runtime.log.AvalonLogChute
+2018-03-27 10:37:25,116 - Target log system for org.apache.velocity.runtime.log.AvalonLogChute is not available (java.lang.NoClassDefFoundError: org/apache/log/format/Formatter).  Falling back to next log system...
+2018-03-27 10:37:25,116 - Trying to use logger class org.apache.velocity.runtime.log.Log4JLogChute
+2018-03-27 10:37:25,116 - Using logger class org.apache.velocity.runtime.log.Log4JLogChute
+2018-03-27 10:37:25,121 - ResourceLoader instantiated: org.apache.velocity.runtime.resource.loader.FileResourceLoader
+2018-03-27 10:37:25,122 - Do unicode file recognition:  false
+2018-03-27 10:37:25,122 - FileResourceLoader : adding path '.'
+2018-03-27 10:37:25,134 - ResourceCache: initialized (class org.apache.velocity.runtime.resource.ResourceCacheImpl) with class java.util.Collections$SynchronizedMap cache map.
+2018-03-27 10:37:25,136 - Loaded System Directive: org.apache.velocity.runtime.directive.Define
+2018-03-27 10:37:25,138 - Loaded System Directive: org.apache.velocity.runtime.directive.Break
+2018-03-27 10:37:25,139 - Loaded System Directive: org.apache.velocity.runtime.directive.Evaluate
+2018-03-27 10:37:25,139 - Loaded System Directive: org.apache.velocity.runtime.directive.Literal
+2018-03-27 10:37:25,141 - Loaded System Directive: org.apache.velocity.runtime.directive.Macro
+2018-03-27 10:37:25,144 - Loaded System Directive: org.apache.velocity.runtime.directive.Parse
+2018-03-27 10:37:25,145 - Loaded System Directive: org.apache.velocity.runtime.directive.Include
+2018-03-27 10:37:25,146 - Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
+2018-03-27 10:37:25,181 - Created '20' parsers.
+2018-03-27 10:37:25,192 - Velocimacro : "velocimacro.library" is not set.  Trying default library: VM_global_library.vm
+2018-03-27 10:37:25,192 - Velocimacro : Default library not found.
+2018-03-27 10:37:25,193 - Velocimacro : allowInline = true : VMs can be defined inline in templates
+2018-03-27 10:37:25,193 - Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
+2018-03-27 10:37:25,193 - Velocimacro : allowInlineLocal = false : VMs defined inline will be global in scope if allowed.
+2018-03-27 10:37:25,193 - Velocimacro : autoload off : VM system will not automatically reload global library macros
+2018-03-27 10:37:25,216 - ResourceManager : found velocityTemplate/IDomainService.java with loader org.apache.velocity.runtime.resource.loader.FileResourceLoader
+2018-03-27 10:37:25,223 - ResourceManager : found velocityTemplate/DomainServiceImpl.java with loader org.apache.velocity.runtime.resource.loader.FileResourceLoader
+2018-03-27 10:37:25,228 - ResourceManager : found velocityTemplate/DomainServiceTest.java with loader org.apache.velocity.runtime.resource.loader.FileResourceLoader
+2018-03-27 10:37:25,232 - ResourceManager : found velocityTemplate/DomainQuery.java with loader org.apache.velocity.runtime.resource.loader.FileResourceLoader
+2018-03-27 10:37:25,238 - ResourceManager : found velocityTemplate/DomainAction.java with loader org.apache.velocity.runtime.resource.loader.FileResourceLoader
+2018-03-27 10:37:25,245 - ResourceManager : found velocityTemplate/Domain.hbm.xml with loader org.apache.velocity.runtime.resource.loader.FileResourceLoader
+2018-03-27 10:37:25,279 - ResourceManager : found velocityTemplate/domainContext.xml with loader org.apache.velocity.runtime.resource.loader.FileResourceLoader
+2018-03-27 10:37:25,284 - ResourceManager : found velocityTemplate/domain.js with loader org.apache.velocity.runtime.resource.loader.FileResourceLoader
+2018-03-27 10:37:25,294 - ResourceManager : found velocityTemplate/domain.jsp with loader org.apache.velocity.runtime.resource.loader.FileResourceLoader
+2018-03-27 10:37:25,296 - Null reference [template 'velocityTemplate/domain.jsp', line 42, column 159] : ${pageList.currentPage} cannot be resolved.
+2018-03-27 10:37:25,296 - Null reference [template 'velocityTemplate/domain.jsp', line 47, column 152] : ${baseQuery.name} cannot be resolved.
+2018-03-27 10:37:25,299 - Null reference [template 'velocityTemplate/domain.jsp', line 84, column 93] : ${id} cannot be resolved.
+2018-03-27 10:37:25,299 - Null reference [template 'velocityTemplate/domain.jsp', line 85, column 93] : ${name} cannot be resolved.
+2018-03-27 10:37:25,299 - Null reference [template 'velocityTemplate/domain.jsp', line 88, column 185] : ${id} cannot be resolved.
+2018-03-27 10:37:25,299 - Null reference [template 'velocityTemplate/domain.jsp', line 91, column 184] : ${id} cannot be resolved.
+2018-03-27 10:37:25,303 - ResourceManager : found velocityTemplate/domain_input.jsp with loader org.apache.velocity.runtime.resource.loader.FileResourceLoader
+2018-03-27 10:37:25,304 - Null reference [template 'velocityTemplate/domain_input.jsp', line 57, column 132] : ${name} cannot be resolved.
+2018-03-27 10:38:55,329 - Log4JLogChute initialized using file 'velocity.log'
+2018-03-27 10:38:55,330 - Starting Apache Velocity v1.6 (compiled: 2008-11-24 15:58:18)
+2018-03-27 10:38:55,330 - Default Properties File: org\apache\velocity\runtime\defaults\velocity.properties
+2018-03-27 10:38:55,330 - Trying to use logger class org.apache.velocity.runtime.log.AvalonLogChute
+2018-03-27 10:38:55,330 - Target log system for org.apache.velocity.runtime.log.AvalonLogChute is not available (java.lang.NoClassDefFoundError: org/apache/log/format/Formatter).  Falling back to next log system...
+2018-03-27 10:38:55,330 - Trying to use logger class org.apache.velocity.runtime.log.Log4JLogChute
+2018-03-27 10:38:55,330 - Using logger class org.apache.velocity.runtime.log.Log4JLogChute
+2018-03-27 10:38:55,335 - ResourceLoader instantiated: org.apache.velocity.runtime.resource.loader.FileResourceLoader
+2018-03-27 10:38:55,337 - Do unicode file recognition:  false
+2018-03-27 10:38:55,337 - FileResourceLoader : adding path '.'
+2018-03-27 10:38:55,349 - ResourceCache: initialized (class org.apache.velocity.runtime.resource.ResourceCacheImpl) with class java.util.Collections$SynchronizedMap cache map.
+2018-03-27 10:38:55,351 - Loaded System Directive: org.apache.velocity.runtime.directive.Define
+2018-03-27 10:38:55,352 - Loaded System Directive: org.apache.velocity.runtime.directive.Break
+2018-03-27 10:38:55,353 - Loaded System Directive: org.apache.velocity.runtime.directive.Evaluate
+2018-03-27 10:38:55,354 - Loaded System Directive: org.apache.velocity.runtime.directive.Literal
+2018-03-27 10:38:55,355 - Loaded System Directive: org.apache.velocity.runtime.directive.Macro
+2018-03-27 10:38:55,356 - Loaded System Directive: org.apache.velocity.runtime.directive.Parse
+2018-03-27 10:38:55,358 - Loaded System Directive: org.apache.velocity.runtime.directive.Include
+2018-03-27 10:38:55,358 - Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
+2018-03-27 10:38:55,390 - Created '20' parsers.
+2018-03-27 10:38:55,396 - Velocimacro : "velocimacro.library" is not set.  Trying default library: VM_global_library.vm
+2018-03-27 10:38:55,397 - Velocimacro : Default library not found.
+2018-03-27 10:38:55,397 - Velocimacro : allowInline = true : VMs can be defined inline in templates
+2018-03-27 10:38:55,397 - Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
+2018-03-27 10:38:55,397 - Velocimacro : allowInlineLocal = false : VMs defined inline will be global in scope if allowed.
+2018-03-27 10:38:55,397 - Velocimacro : autoload off : VM system will not automatically reload global library macros
+2018-03-27 10:38:55,413 - ResourceManager : found velocityTemplate/IDomainService.java with loader org.apache.velocity.runtime.resource.loader.FileResourceLoader
+2018-03-27 10:38:55,418 - ResourceManager : found velocityTemplate/DomainServiceImpl.java with loader org.apache.velocity.runtime.resource.loader.FileResourceLoader
+2018-03-27 10:38:55,422 - ResourceManager : found velocityTemplate/DomainServiceTest.java with loader org.apache.velocity.runtime.resource.loader.FileResourceLoader
+2018-03-27 10:38:55,425 - ResourceManager : found velocityTemplate/DomainQuery.java with loader org.apache.velocity.runtime.resource.loader.FileResourceLoader
+2018-03-27 10:38:55,432 - ResourceManager : found velocityTemplate/DomainAction.java with loader org.apache.velocity.runtime.resource.loader.FileResourceLoader
+2018-03-27 10:38:55,439 - ResourceManager : found velocityTemplate/Domain.hbm.xml with loader org.apache.velocity.runtime.resource.loader.FileResourceLoader
+2018-03-27 10:38:55,451 - ResourceManager : found velocityTemplate/domainContext.xml with loader org.apache.velocity.runtime.resource.loader.FileResourceLoader
+2018-03-27 10:38:55,456 - ResourceManager : found velocityTemplate/domain.js with loader org.apache.velocity.runtime.resource.loader.FileResourceLoader
+2018-03-27 10:38:55,465 - ResourceManager : found velocityTemplate/domain.jsp with loader org.apache.velocity.runtime.resource.loader.FileResourceLoader
+2018-03-27 10:38:55,467 - Null reference [template 'velocityTemplate/domain.jsp', line 42, column 159] : ${pageList.currentPage} cannot be resolved.
+2018-03-27 10:38:55,467 - Null reference [template 'velocityTemplate/domain.jsp', line 47, column 152] : ${baseQuery.name} cannot be resolved.
+2018-03-27 10:38:55,467 - Null reference [template 'velocityTemplate/domain.jsp', line 84, column 93] : ${id} cannot be resolved.
+2018-03-27 10:38:55,467 - Null reference [template 'velocityTemplate/domain.jsp', line 85, column 93] : ${name} cannot be resolved.
+2018-03-27 10:38:55,467 - Null reference [template 'velocityTemplate/domain.jsp', line 88, column 185] : ${id} cannot be resolved.
+2018-03-27 10:38:55,467 - Null reference [template 'velocityTemplate/domain.jsp', line 91, column 184] : ${id} cannot be resolved.
+2018-03-27 10:38:55,471 - ResourceManager : found velocityTemplate/domain_input.jsp with loader org.apache.velocity.runtime.resource.loader.FileResourceLoader
+2018-03-27 10:38:55,472 - Null reference [template 'velocityTemplate/domain_input.jsp', line 57, column 132] : ${name} cannot be resolved.
+2018-03-27 10:57:17,023 - Log4JLogChute initialized using file 'velocity.log'
+2018-03-27 10:57:17,024 - Starting Apache Velocity v1.6 (compiled: 2008-11-24 15:58:18)
+2018-03-27 10:57:17,024 - Default Properties File: org\apache\velocity\runtime\defaults\velocity.properties
+2018-03-27 10:57:17,024 - Trying to use logger class org.apache.velocity.runtime.log.AvalonLogChute
+2018-03-27 10:57:17,024 - Target log system for org.apache.velocity.runtime.log.AvalonLogChute is not available (java.lang.NoClassDefFoundError: org/apache/log/format/Formatter).  Falling back to next log system...
+2018-03-27 10:57:17,024 - Trying to use logger class org.apache.velocity.runtime.log.Log4JLogChute
+2018-03-27 10:57:17,024 - Using logger class org.apache.velocity.runtime.log.Log4JLogChute
+2018-03-27 10:57:17,031 - ResourceLoader instantiated: org.apache.velocity.runtime.resource.loader.FileResourceLoader
+2018-03-27 10:57:17,035 - Do unicode file recognition:  false
+2018-03-27 10:57:17,035 - FileResourceLoader : adding path '.'
+2018-03-27 10:57:17,048 - ResourceCache: initialized (class org.apache.velocity.runtime.resource.ResourceCacheImpl) with class java.util.Collections$SynchronizedMap cache map.
+2018-03-27 10:57:17,050 - Loaded System Directive: org.apache.velocity.runtime.directive.Define
+2018-03-27 10:57:17,051 - Loaded System Directive: org.apache.velocity.runtime.directive.Break
+2018-03-27 10:57:17,052 - Loaded System Directive: org.apache.velocity.runtime.directive.Evaluate
+2018-03-27 10:57:17,052 - Loaded System Directive: org.apache.velocity.runtime.directive.Literal
+2018-03-27 10:57:17,053 - Loaded System Directive: org.apache.velocity.runtime.directive.Macro
+2018-03-27 10:57:17,055 - Loaded System Directive: org.apache.velocity.runtime.directive.Parse
+2018-03-27 10:57:17,056 - Loaded System Directive: org.apache.velocity.runtime.directive.Include
+2018-03-27 10:57:17,057 - Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
+2018-03-27 10:57:17,098 - Created '20' parsers.
+2018-03-27 10:57:17,107 - Velocimacro : "velocimacro.library" is not set.  Trying default library: VM_global_library.vm
+2018-03-27 10:57:17,107 - Velocimacro : Default library not found.
+2018-03-27 10:57:17,107 - Velocimacro : allowInline = true : VMs can be defined inline in templates
+2018-03-27 10:57:17,107 - Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
+2018-03-27 10:57:17,107 - Velocimacro : allowInlineLocal = false : VMs defined inline will be global in scope if allowed.
+2018-03-27 10:57:17,107 - Velocimacro : autoload off : VM system will not automatically reload global library macros
+2018-03-27 10:57:17,127 - ResourceManager : found velocityTemplate/IDomainService.java with loader org.apache.velocity.runtime.resource.loader.FileResourceLoader
+2018-03-27 10:57:17,131 - ResourceManager : found velocityTemplate/DomainServiceImpl.java with loader org.apache.velocity.runtime.resource.loader.FileResourceLoader
+2018-03-27 10:57:17,136 - ResourceManager : found velocityTemplate/DomainServiceTest.java with loader org.apache.velocity.runtime.resource.loader.FileResourceLoader
+2018-03-27 10:57:17,139 - ResourceManager : found velocityTemplate/DomainQuery.java with loader org.apache.velocity.runtime.resource.loader.FileResourceLoader
+2018-03-27 10:57:17,147 - ResourceManager : found velocityTemplate/DomainAction.java with loader org.apache.velocity.runtime.resource.loader.FileResourceLoader
+2018-03-27 10:57:17,154 - ResourceManager : found velocityTemplate/Domain.hbm.xml with loader org.apache.velocity.runtime.resource.loader.FileResourceLoader
+2018-03-27 10:57:17,167 - ResourceManager : found velocityTemplate/domainContext.xml with loader org.apache.velocity.runtime.resource.loader.FileResourceLoader
+2018-03-27 10:57:17,172 - ResourceManager : found velocityTemplate/domain.js with loader org.apache.velocity.runtime.resource.loader.FileResourceLoader
+2018-03-27 10:57:17,180 - ResourceManager : found velocityTemplate/domain.jsp with loader org.apache.velocity.runtime.resource.loader.FileResourceLoader
+2018-03-27 10:57:17,183 - Null reference [template 'velocityTemplate/domain.jsp', line 42, column 159] : ${pageList.currentPage} cannot be resolved.
+2018-03-27 10:57:17,183 - Null reference [template 'velocityTemplate/domain.jsp', line 47, column 152] : ${baseQuery.name} cannot be resolved.
+2018-03-27 10:57:17,183 - Null reference [template 'velocityTemplate/domain.jsp', line 84, column 93] : ${id} cannot be resolved.
+2018-03-27 10:57:17,183 - Null reference [template 'velocityTemplate/domain.jsp', line 85, column 93] : ${name} cannot be resolved.
+2018-03-27 10:57:17,184 - Null reference [template 'velocityTemplate/domain.jsp', line 88, column 185] : ${id} cannot be resolved.
+2018-03-27 10:57:17,184 - Null reference [template 'velocityTemplate/domain.jsp', line 91, column 184] : ${id} cannot be resolved.
+2018-03-27 10:57:17,187 - ResourceManager : found velocityTemplate/domain_input.jsp with loader org.apache.velocity.runtime.resource.loader.FileResourceLoader
+2018-03-27 10:57:17,189 - Null reference [template 'velocityTemplate/domain_input.jsp', line 57, column 132] : ${name} cannot be resolved.
+2018-03-27 11:25:17,613 - Log4JLogChute initialized using file 'velocity.log'
+2018-03-27 11:25:17,614 - Starting Apache Velocity v1.6 (compiled: 2008-11-24 15:58:18)
+2018-03-27 11:25:17,614 - Default Properties File: org\apache\velocity\runtime\defaults\velocity.properties
+2018-03-27 11:25:17,614 - Trying to use logger class org.apache.velocity.runtime.log.AvalonLogChute
+2018-03-27 11:25:17,615 - Target log system for org.apache.velocity.runtime.log.AvalonLogChute is not available (java.lang.NoClassDefFoundError: org/apache/log/format/Formatter).  Falling back to next log system...
+2018-03-27 11:25:17,615 - Trying to use logger class org.apache.velocity.runtime.log.Log4JLogChute
+2018-03-27 11:25:17,615 - Using logger class org.apache.velocity.runtime.log.Log4JLogChute
+2018-03-27 11:25:17,621 - ResourceLoader instantiated: org.apache.velocity.runtime.resource.loader.FileResourceLoader
+2018-03-27 11:25:17,623 - Do unicode file recognition:  false
+2018-03-27 11:25:17,623 - FileResourceLoader : adding path '.'
+2018-03-27 11:25:17,639 - ResourceCache: initialized (class org.apache.velocity.runtime.resource.ResourceCacheImpl) with class java.util.Collections$SynchronizedMap cache map.
+2018-03-27 11:25:17,641 - Loaded System Directive: org.apache.velocity.runtime.directive.Define
+2018-03-27 11:25:17,642 - Loaded System Directive: org.apache.velocity.runtime.directive.Break
+2018-03-27 11:25:17,643 - Loaded System Directive: org.apache.velocity.runtime.directive.Evaluate
+2018-03-27 11:25:17,644 - Loaded System Directive: org.apache.velocity.runtime.directive.Literal
+2018-03-27 11:25:17,645 - Loaded System Directive: org.apache.velocity.runtime.directive.Macro
+2018-03-27 11:25:17,647 - Loaded System Directive: org.apache.velocity.runtime.directive.Parse
+2018-03-27 11:25:17,649 - Loaded System Directive: org.apache.velocity.runtime.directive.Include
+2018-03-27 11:25:17,651 - Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
+2018-03-27 11:25:17,692 - Created '20' parsers.
+2018-03-27 11:25:17,701 - Velocimacro : "velocimacro.library" is not set.  Trying default library: VM_global_library.vm
+2018-03-27 11:25:17,702 - Velocimacro : Default library not found.
+2018-03-27 11:25:17,702 - Velocimacro : allowInline = true : VMs can be defined inline in templates
+2018-03-27 11:25:17,702 - Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
+2018-03-27 11:25:17,702 - Velocimacro : allowInlineLocal = false : VMs defined inline will be global in scope if allowed.
+2018-03-27 11:25:17,702 - Velocimacro : autoload off : VM system will not automatically reload global library macros
+2018-03-27 11:25:17,725 - ResourceManager : found velocityTemplate/domain.js with loader org.apache.velocity.runtime.resource.loader.FileResourceLoader
+2018-03-27 13:08:39,365 - Log4JLogChute initialized using file 'velocity.log'
+2018-03-27 13:08:39,400 - Starting Apache Velocity v1.6 (compiled: 2008-11-24 15:58:18)
+2018-03-27 13:08:39,400 - Default Properties File: org\apache\velocity\runtime\defaults\velocity.properties
+2018-03-27 13:08:39,400 - Trying to use logger class org.apache.velocity.runtime.log.AvalonLogChute
+2018-03-27 13:08:39,400 - Target log system for org.apache.velocity.runtime.log.AvalonLogChute is not available (java.lang.NoClassDefFoundError: org/apache/log/format/Formatter).  Falling back to next log system...
+2018-03-27 13:08:39,400 - Trying to use logger class org.apache.velocity.runtime.log.Log4JLogChute
+2018-03-27 13:08:39,400 - Using logger class org.apache.velocity.runtime.log.Log4JLogChute
+2018-03-27 13:08:39,422 - ResourceLoader instantiated: org.apache.velocity.runtime.resource.loader.FileResourceLoader
+2018-03-27 13:08:39,423 - Do unicode file recognition:  false
+2018-03-27 13:08:39,423 - FileResourceLoader : adding path '.'
+2018-03-27 13:08:39,459 - ResourceCache: initialized (class org.apache.velocity.runtime.resource.ResourceCacheImpl) with class java.util.Collections$SynchronizedMap cache map.
+2018-03-27 13:08:39,462 - Loaded System Directive: org.apache.velocity.runtime.directive.Define
+2018-03-27 13:08:39,463 - Loaded System Directive: org.apache.velocity.runtime.directive.Break
+2018-03-27 13:08:39,464 - Loaded System Directive: org.apache.velocity.runtime.directive.Evaluate
+2018-03-27 13:08:39,465 - Loaded System Directive: org.apache.velocity.runtime.directive.Literal
+2018-03-27 13:08:39,467 - Loaded System Directive: org.apache.velocity.runtime.directive.Macro
+2018-03-27 13:08:39,469 - Loaded System Directive: org.apache.velocity.runtime.directive.Parse
+2018-03-27 13:08:39,470 - Loaded System Directive: org.apache.velocity.runtime.directive.Include
+2018-03-27 13:08:39,471 - Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
+2018-03-27 13:08:39,515 - Created '20' parsers.
+2018-03-27 13:08:39,522 - Velocimacro : "velocimacro.library" is not set.  Trying default library: VM_global_library.vm
+2018-03-27 13:08:39,522 - Velocimacro : Default library not found.
+2018-03-27 13:08:39,522 - Velocimacro : allowInline = true : VMs can be defined inline in templates
+2018-03-27 13:08:39,522 - Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
+2018-03-27 13:08:39,522 - Velocimacro : allowInlineLocal = false : VMs defined inline will be global in scope if allowed.
+2018-03-27 13:08:39,522 - Velocimacro : autoload off : VM system will not automatically reload global library macros
+2018-03-27 13:08:39,562 - ResourceManager : found velocityTemplate/IDomainService.java with loader org.apache.velocity.runtime.resource.loader.FileResourceLoader
+2018-03-27 13:08:39,565 - ResourceManager : found velocityTemplate/DomainServiceImpl.java with loader org.apache.velocity.runtime.resource.loader.FileResourceLoader
+2018-03-27 13:08:39,569 - ResourceManager : found velocityTemplate/DomainServiceTest.java with loader org.apache.velocity.runtime.resource.loader.FileResourceLoader
+2018-03-27 13:08:39,571 - ResourceManager : found velocityTemplate/DomainQuery.java with loader org.apache.velocity.runtime.resource.loader.FileResourceLoader
+2018-03-27 13:08:39,575 - ResourceManager : found velocityTemplate/DomainAction.java with loader org.apache.velocity.runtime.resource.loader.FileResourceLoader
+2018-03-27 13:08:39,602 - ResourceManager : found velocityTemplate/Domain.hbm.xml with loader org.apache.velocity.runtime.resource.loader.FileResourceLoader
+2018-03-27 13:08:39,615 - ResourceManager : found velocityTemplate/domainContext.xml with loader org.apache.velocity.runtime.resource.loader.FileResourceLoader
+2018-03-27 13:08:39,619 - ResourceManager : found velocityTemplate/domain.js with loader org.apache.velocity.runtime.resource.loader.FileResourceLoader
+2018-03-27 13:08:39,642 - ResourceManager : found velocityTemplate/domain.jsp with loader org.apache.velocity.runtime.resource.loader.FileResourceLoader
+2018-03-27 13:08:39,644 - Null reference [template 'velocityTemplate/domain.jsp', line 42, column 159] : ${pageList.currentPage} cannot be resolved.
+2018-03-27 13:08:39,644 - Null reference [template 'velocityTemplate/domain.jsp', line 47, column 152] : ${baseQuery.name} cannot be resolved.
+2018-03-27 13:08:39,645 - Null reference [template 'velocityTemplate/domain.jsp', line 84, column 93] : ${id} cannot be resolved.
+2018-03-27 13:08:39,645 - Null reference [template 'velocityTemplate/domain.jsp', line 85, column 93] : ${name} cannot be resolved.
+2018-03-27 13:08:39,645 - Null reference [template 'velocityTemplate/domain.jsp', line 88, column 185] : ${id} cannot be resolved.
+2018-03-27 13:08:39,645 - Null reference [template 'velocityTemplate/domain.jsp', line 91, column 184] : ${id} cannot be resolved.
+2018-03-27 13:08:39,668 - ResourceManager : found velocityTemplate/domain_input.jsp with loader org.apache.velocity.runtime.resource.loader.FileResourceLoader
+2018-03-27 13:08:39,669 - Null reference [template 'velocityTemplate/domain_input.jsp', line 57, column 132] : ${name} cannot be resolved.
+2018-03-27 13:08:39,670 - ResourceManager : found velocityTemplate/IDomainService.java with loader org.apache.velocity.runtime.resource.loader.FileResourceLoader
+2018-03-27 13:08:39,672 - ResourceManager : found velocityTemplate/DomainServiceImpl.java with loader org.apache.velocity.runtime.resource.loader.FileResourceLoader
+2018-03-27 13:08:39,675 - ResourceManager : found velocityTemplate/DomainServiceTest.java with loader org.apache.velocity.runtime.resource.loader.FileResourceLoader
+2018-03-27 13:08:39,679 - ResourceManager : found velocityTemplate/DomainQuery.java with loader org.apache.velocity.runtime.resource.loader.FileResourceLoader
+2018-03-27 13:08:39,684 - ResourceManager : found velocityTemplate/DomainAction.java with loader org.apache.velocity.runtime.resource.loader.FileResourceLoader
+2018-03-27 13:08:39,688 - ResourceManager : found velocityTemplate/Domain.hbm.xml with loader org.apache.velocity.runtime.resource.loader.FileResourceLoader
+2018-03-27 13:08:39,690 - ResourceManager : found velocityTemplate/domainContext.xml with loader org.apache.velocity.runtime.resource.loader.FileResourceLoader
+2018-03-27 13:08:39,692 - ResourceManager : found velocityTemplate/domain.js with loader org.apache.velocity.runtime.resource.loader.FileResourceLoader
+2018-03-27 13:08:39,696 - ResourceManager : found velocityTemplate/domain.jsp with loader org.apache.velocity.runtime.resource.loader.FileResourceLoader
+2018-03-27 13:08:39,697 - Null reference [template 'velocityTemplate/domain.jsp', line 42, column 159] : ${pageList.currentPage} cannot be resolved.
+2018-03-27 13:08:39,697 - Null reference [template 'velocityTemplate/domain.jsp', line 47, column 152] : ${baseQuery.name} cannot be resolved.
+2018-03-27 13:08:39,697 - Null reference [template 'velocityTemplate/domain.jsp', line 84, column 93] : ${id} cannot be resolved.
+2018-03-27 13:08:39,697 - Null reference [template 'velocityTemplate/domain.jsp', line 85, column 93] : ${name} cannot be resolved.
+2018-03-27 13:08:39,698 - Null reference [template 'velocityTemplate/domain.jsp', line 88, column 185] : ${id} cannot be resolved.
+2018-03-27 13:08:39,698 - Null reference [template 'velocityTemplate/domain.jsp', line 91, column 184] : ${id} cannot be resolved.
+2018-03-27 13:08:39,700 - ResourceManager : found velocityTemplate/domain_input.jsp with loader org.apache.velocity.runtime.resource.loader.FileResourceLoader
+2018-03-27 13:08:39,700 - Null reference [template 'velocityTemplate/domain_input.jsp', line 57, column 132] : ${name} cannot be resolved.

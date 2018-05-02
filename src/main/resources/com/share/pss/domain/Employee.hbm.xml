@@ -16,5 +16,9 @@
 		<many-to-one name="department" class="com.share.pss.domain.Department">
 			<column name="department_id"></column>
 		</many-to-one>
+		<set name="roles" table="employee_role">
+			<key column="employee_id"/>
+			<many-to-many class="Role" column="role_id"/>
+		</set>
 	</class>
 </hibernate-mapping>

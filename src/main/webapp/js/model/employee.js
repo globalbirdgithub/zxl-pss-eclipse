@@ -1,15 +1,6 @@
-//信息重置功能js
-function clearForm(){
-	$(':input','form')																	 //匹配所有 input, textarea, select 和 button 元素  
-	 .not(':button, :submit, :reset, :hidden') 															      //去除所有与给定选择器匹配的元素
-	 .val('')  																									 //获得/设置匹配元素的当前值
-	 .removeAttr('checked')  																				 //从每一个匹配的元素中删除一个属性
-	 .removeAttr('selected'); 
-	$('select').prop('selectedIndex', 0);						//选中'---请选择---',jquery1.6以下版本$('select').attr('selectedIndex', 0)
-}																			   //jquery1.6或以上版本$('select').prop('selectedIndex', 0)
 //字段验证功能js
 $(function(){
-	$("#employeeFrom").bootstrapValidator({
+	$("#employeeForm").bootstrapValidator({
         message: '值不能为空',                                                                                              //字段通用提示语
         feedbackIcons: {
             valid: 'glyphicon glyphicon-ok',

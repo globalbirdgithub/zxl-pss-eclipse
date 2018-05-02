@@ -46,7 +46,7 @@
 			<div class="row">					       <!-- ===提示：①使用s标签的时候-获取和提交都可以只用name。②不用s标签时-获取需要EL表达式$，提交需要name=== -->
 				<div class="col-xs-12">													       <!-- .col-xs-* 针对超小屏幕和中等屏幕设备所定义的类 -->
 					<!-- 页面内容开始 -->
-					<form id="employeeFrom" class="form-horizontal" action="employee_save.action" role="form" method="post"><!-- form-horizontal将 label标签和控件组水平并排布局 -->
+					<form id="employeeForm" class="form-horizontal" action="employee_save.action" role="form" method="post"><!-- form-horizontal将 label标签和控件组水平并排布局 -->
 						<s:hidden id="userId" name="id"/>																   <!-- 解决修改回显问题 -->
 						<s:hidden name="baseQuery.currentPage"/>
 						<s:hidden name="baseQuery.pageSize"/>
@@ -60,8 +60,8 @@
 								<input type="text" id="form-field-1" placeholder="请输入用户名..." value="${username}" name="username" class="col-xs-10 col-sm-5"/>
 							</div>
 						</div>
-						<div class="space-4"></div>
 						<s:if test="id==null"><!-- 只有新增才可以修改密码 -->
+							<div class="space-4"></div>
 							<div class="form-group">
 								<label class="col-sm-3 control-label no-padding-right" for="form-field-2">密码 </label>
 								<div class="col-sm-9">
@@ -97,6 +97,13 @@
 								<s:select list="#allDepts" name="department.id" listKey="id" listValue="name" headerKey="-1" headerValue="---请选择---" />
 							</div>
 						</div>
+						<div class="space-4"></div>
+						<div class="form-group">
+							<label class="col-sm-3 control-label no-padding-right" for="form-field-2">角色 </label>
+							<div class="col-sm-9">
+								<s:checkboxlist list="#allRoles" name="ids" listKey="id" listValue="name"/>
+							</div>
+						</div>
 						<!-- 按钮 -->
 						<div class="clearfix form-actions">														 <!-- clearfix响应式列重置 -->
 							<div class="col-md-offset-5">									  <!-- 使用 .col-md-offset-* 类可以将列向右侧偏移。 -->
@@ -106,7 +113,7 @@
 								<button class="btn btn-success" type="button" onclick="clearForm()">
 									<i class="icon-refresh bigger-110"></i> 清空
 								</button>
-								<button class="btn btn-warning" type="button" onclick="cancel()">
+								<button class="btn btn-warning" type="button" onclick="cancel('employee')">
 									<i class="icon-undo bigger-110"></i> 取消
 								</button>
 							</div>

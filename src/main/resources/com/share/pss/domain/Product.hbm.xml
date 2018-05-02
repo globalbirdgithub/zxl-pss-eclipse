@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.share.pss.domain">
+	<class name="Product" table="product">
+		<id name="id">
+			<generator class="native" />
+		</id>
+		<property name="name" column="name" type="string"/>
+		<property name="color" column="color" type="string" />
+		<property name="pic" column="pic" type="string" />
+		<property name="smallPic" column="smallPic" type="string" />
+		<property name="costPrice" column="costPrice" type="big_decimal"/>
+		<property name="salePrice" column="salePrice" type="big_decimal" />
+		<many-to-one name="productType" column="types_id" not-null="true" class="com.share.pss.domain.ProductType"/>
+		<many-to-one name="unit" column="unit_id" not-null="true" class="com.share.pss.domain.SystemDictionaryDetail"/>
+		<many-to-one name="brand" column="brand_id" not-null="true" class="com.share.pss.domain.SystemDictionaryDetail" />
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.share.pss.domain">
+	<class name="Role" table="role">
+		<id name="id">
+			<generator class="native" />
+		</id>
+		<property name="name" column="name" type="string"/>
+		<set name="permissions" table="role_permission">
+			<key column="role_id"/>
+			<many-to-many class="Permission" column="permission_id"/>
+		</set>
+		<set name="menus" table="role_menu">
+			<key column="role_id"/>
+			<many-to-many class="Menu" column="menu_id"/>
+		</set>
+	</class>
+</hibernate-mapping>

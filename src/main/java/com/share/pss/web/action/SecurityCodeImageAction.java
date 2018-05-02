@@ -1,8 +1,8 @@
 package com.share.pss.web.action;
 
 import java.io.ByteArrayInputStream;
-import java.util.Map;
 
+import com.opensymphony.xwork2.ActionContext;
 import com.share.pss.tool.SecurityCode;
 import com.share.pss.tool.SecurityImage;
 
@@ -13,8 +13,6 @@ import com.share.pss.tool.SecurityImage;
  */
 public class SecurityCodeImageAction extends BaseAction{
 	private static final long serialVersionUID = 1L;
-	//struts2中Map类型的Session
-	private Map<String,Object> session;
 	//图片流
 	private ByteArrayInputStream byteArrayInputStream;
 	public ByteArrayInputStream getByteArrayInputStream() {
@@ -29,13 +27,10 @@ public class SecurityCodeImageAction extends BaseAction{
 		//String securityCode = SecurityCode.getSecurityCode(4, SecurityCodeLevel.Hard, false).toLowerCase();
 		//获取默认难度和长度的验证码
 		String securityCode = SecurityCode.getSecurityCode();
+		//获取验证码图片
 		byteArrayInputStream = SecurityImage.getImageAsInputStream(securityCode);
-		//放入Session
-		session.put("SESSION_SECURITY_CODE",securityCode);
-		System.out.println("xxxxxxxxxxxxxxxxxxxxxxxxxxx");
+		//验证码放入Session
+		ActionContext.getContext().getSession().put(SESSION_SECURITY_CODE, securityCode);
 		return SUCCESS;
-	}
-	public void setSession(Map<String, Object> session) {
-		this.session = session;
 	}
 }

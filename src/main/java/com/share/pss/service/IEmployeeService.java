@@ -10,4 +10,6 @@ import com.share.pss.domain.Employee;
 public interface IEmployeeService extends IBaseService<Employee>{
 	//用户名检查方法
 	boolean findByUsername(String username);
+	//处理登录请求
+	Employee findByLoginUser(String username, String password);
 }

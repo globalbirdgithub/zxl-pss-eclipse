@@ -11,7 +11,6 @@
 <body>
 	<%-- <s:debug></s:debug> --%>
 	<div class="main-content">
-	
 		<div class="breadcrumbs" id="breadcrumbs">
 			<script type="text/javascript">
 				try {
@@ -53,11 +52,12 @@
 										<a class="btn btn-xs btn-pink" href="employee_input.action">
 											<i class="icon-credit-card">新建</i>	
 										</a>
+										<a class="btn btn-xs btn-info" href="#" onclick="downloadDomain('employee')">导出Excel文件</a>
 									</div>
 								</form>
 							</div>
 							
-							<table id="sample-table-2" class="table table-striped table-bordered table-hover">
+							<table id="sample-table-2" class="table table-striped table-bordered table-hover dataTable">
 								<thead>
 									<tr>
 										<th class="center" width="5%">
@@ -98,7 +98,16 @@
 											</td>
 											<td>${age}</td>
 											<td>${department.name}</td>
-											<td></td>
+											<td>
+												<s:iterator value="roles" status="sta">
+													<s:if test="#sta.last">
+														${name}
+													</s:if>
+													<s:else>
+														${name},
+													</s:else>
+												</s:iterator>
+											</td>
 											<td>
 												<div class="visible-md visible-lg hidden-sm hidden-xs action-buttons">
 													<a class="green" href="#" onclick="updateDomain('employee_input.action?id=${id}')">
@@ -113,9 +122,9 @@
 									</s:iterator>
 								</tbody>
 							</table>
-						
+							
 							<%@ include file="/WEB-INF/views/common/page.jsp" %>
-								
+							<%@ include file="/WEB-INF/views/common/modal.jsp" %>
 						</div><!-- /.modal-content -->
 					</div><!-- /.modal-dialog -->
 				</div><!-- /.col -->

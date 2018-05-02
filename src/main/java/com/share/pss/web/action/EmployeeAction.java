@@ -1,6 +1,11 @@
 package com.share.pss.web.action;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -8,10 +13,12 @@ import org.apache.struts2.ServletActionContext;
 
 import com.share.pss.domain.Department;
 import com.share.pss.domain.Employee;
+import com.share.pss.domain.Role;
 import com.share.pss.query.EmployeeQuery;
 import com.share.pss.query.PageList;
 import com.share.pss.service.IDepartmentService;
 import com.share.pss.service.IEmployeeService;
+import com.share.pss.service.IRoleService;
 /**
  * @author MrZhang
  * @date 2017年11月1日 下午11:32:44
@@ -29,6 +36,17 @@ public class EmployeeAction extends CRUDAction<Employee>{
 	public void setDepartmentService(IDepartmentService departmentService) {
 		this.departmentService = departmentService;
 	}
+	private IRoleService roleService;
+	public void setRoleService(IRoleService roleService) {
+		this.roleService = roleService;
+	}
+	private Long[] ids;
+	public Long[] getIds() {
+		return ids;
+	}
+	public void setIds(Long[] ids) {
+		this.ids = ids;
+	}
 	//Struts2管理 通过值栈(List/Map)向前台提供数据，
 	//List栈需要：属性+getter；Map栈需要：ActionContext.getContext.put(key,value)
 	private PageList pageList;
@@ -42,11 +60,11 @@ public class EmployeeAction extends CRUDAction<Employee>{
 	}
 	//Struts2管理 用于接收和回显前台数据，需要它在栈顶时才放到栈顶
 	private Employee employee;
-	
 	//====================================Action方法=========================================
 	//获取所有
 	@Override
 	protected void list() {
+		logger.debug("EmployeeAction日志");
 		this.pageList = employeeService.findByQuery(baseQuery);
 		putContext("allDepts", departmentService.getAll());
 	}
@@ -55,6 +73,7 @@ public class EmployeeAction extends CRUDAction<Employee>{
 	protected void inputt() {
 		/*留空*/
 		putContext("allDepts", departmentService.getAll());
+		putContext("allRoles", roleService.getAll());
 	}
 	//保存
 	@Override
@@ -62,6 +81,11 @@ public class EmployeeAction extends CRUDAction<Employee>{
 		Department department = employee.getDepartment();
 		if(department!=null && department.getId()==-1L){
 			employee.setDepartment(null);
+		}
+		if(ids!=null){
+			for (Long roleId : ids) {
+				employee.getRoles().add(new Role(roleId));
+			}
 		}
 		//如果是新增用户，则新增后跳转到最后一页,将参数传递到list方法中
 		if(id==null){
@@ -73,7 +97,7 @@ public class EmployeeAction extends CRUDAction<Employee>{
 	@Override
 	protected void deletee() throws IOException{
 		HttpServletResponse response = ServletActionContext.getResponse();
-		response.setContentType("text/html;charset=UTF-8");
+		response.setContentType("text/json;charset=UTF-8");
 		PrintWriter printWriter = response.getWriter();
 		try {
 			if(id!=null){
@@ -117,6 +141,35 @@ public class EmployeeAction extends CRUDAction<Employee>{
 		}
 		return NONE;
 	}
+	//用于domain excel下载
+	private InputStream fileInputStream;
+	public InputStream getFileInputStream() {
+		return fileInputStream;
+	}
+	//下载文件名
+	public String getFileName()throws UnsupportedEncodingException{
+		return new String("员工列表.xlsx".getBytes("GBK"),"ISO8859-1");
+	}
+	//下载Excel
+	public String download()throws Exception{
+		String[] heads = {"编号","用户名","邮箱","年龄","部门名称"};
+		this.baseQuery.setPageSize(Integer.MAX_VALUE);
+		this.pageList = employeeService.findByQuery(baseQuery);
+		List<Employee> rows = pageList.getRows();
+		List<String[]> list = new ArrayList<>();
+		for (Employee employee : rows) {
+			String[] strings = new String[heads.length];
+			strings[0] = employee.getId().toString();
+			strings[1] = employee.getUsername().toString();
+			strings[2] = employee.getEmail().toString();
+			strings[3] = employee.getAge() == null ? "":employee.getAge().toString();
+			strings[4] = employee.getDepartment() == null ? "":employee.getDepartment().getName().toString();
+			list.add(strings);
+		}
+		InputStream inputStream = employeeService.downloadExcel(list,heads);
+		this.fileInputStream = inputStream;
+		return "download";
+	}
 	//==================================实现ModelDriven和Prepareable接口解决属性丢失问题========================
 	@Override
 	protected void preparee() {
@@ -130,6 +183,12 @@ public class EmployeeAction extends CRUDAction<Employee>{
 	protected void prepareInputt(){
 		if(id!=null){
 			employee = employeeService.get(id);//修改需要回显否则不需要(这时会压栈)
+			Set<Role> roles = employee.getRoles();
+			ids = new Long[roles.size()];
+			int index =0;
+			for (Role role : roles) {
+				ids[index++] = role.getId();
+			}
 		}
 	}
 	@Override
@@ -138,8 +197,9 @@ public class EmployeeAction extends CRUDAction<Employee>{
 			employee = new Employee();
 		}else{
 			employee = employeeService.get(id);
+			employee.setDepartment(null);
+			employee.getRoles().clear();
 		}
-		employee.setDepartment(null);
 	}
 	@Override
 	protected void prepareDeletee() {

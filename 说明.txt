@@ -3,3 +3,5 @@ ssh=struts2+spring3+hibernate3 xx
 本地仓库位置E:\ITsource\9.27java\eclipse\Workspace-maven\zxl-pss
 远程仓库位置https://github.com/globalbirdgithub/zxl-pss-eclipse.git
 		git@github.com:globalbirdgithub/zxl-pss-eclipse.git
+权限控制：
+权限控制模型使用单向一对多/多对一方式。员工能管理其拥有的角色，角色不能管理员工；角色管理其拥有的权限，权限不能管理角色；

@@ -1,5 +1,7 @@
 package com.share.pss.service;
 
+import java.io.File;
+import java.io.InputStream;
 import java.io.Serializable;
 import java.util.List;
 
@@ -23,4 +25,8 @@ public interface IBaseService<T> {
 
 	// 分页查询
 	PageList findByQuery(BaseQuery baseQuery);
+	//下载Excel
+	InputStream downloadExcel(List<String[]> list,String[] heads) throws Exception;
+	//导入Excel
+	List<String[]> importExcel(File uploadFile)throws Exception;
 }
