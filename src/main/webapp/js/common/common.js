@@ -55,9 +55,9 @@ function deleteDomain(url,src){
 	});
 }
 //取消修改/新建
-function cancel(){
+function cancel(domain){
 	window.history.back();//获取浏览器缓存对象
-	location.href="employee.action";//很多人同时管理数据使用此方法，每次获取实时数据
+	location.href=domain+".action";//很多人同时管理数据使用此方法，每次获取实时数据
 }
 //信息重置功能js
 function clearForm(){

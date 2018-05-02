@@ -1,6 +1,6 @@
 //字段验证功能js
 $(function(){
-	$("#deptForm").bootstrapValidator({
+	$("#productTypeForm").bootstrapValidator({
         message: '值不能为空',                                                                                              // 字段通用提示语
         feedbackIcons: {
             valid: 'glyphicon glyphicon-ok',

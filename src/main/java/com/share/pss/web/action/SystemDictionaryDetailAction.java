@@ -4,22 +4,22 @@ import java.io.PrintWriter;
 
 import javax.servlet.http.HttpServletResponse;
 import org.apache.struts2.ServletActionContext;
-import com.share.pss.domain.Dept;
-import com.share.pss.query.DeptQuery;
+import com.share.pss.domain.SystemDictionaryDetail;
+import com.share.pss.query.SystemDictionaryDetailQuery;
 import com.share.pss.query.PageList;
-import com.share.pss.service.IDeptService;
+import com.share.pss.service.ISystemDictionaryDetailService;
 /**
  * @author MrZhang
  * @date 2017年11月1日 下午11:32:44
- * @version V1.0 表现层Action 访问Action的时候默认Action在栈顶，ModelDriven对应的拦截器检测到Dept有值的时候将其压栈到栈顶
+ * @version V1.0 表现层Action 访问Action的时候默认Action在栈顶，ModelDriven对应的拦截器检测到SystemDictionaryDetail有值的时候将其压栈到栈顶
  * 													  Preparable对应的拦截器检测到要执行Action中的方法的时候就执行prepare()
  */
-public class DeptAction extends CRUDAction<Dept>{
+public class SystemDictionaryDetailAction extends CRUDAction<SystemDictionaryDetail>{
 	private static final long serialVersionUID = 1L;
 	//Spring管理
-	private IDeptService deptService;
-	public void setDeptService(IDeptService deptService) {
-		this.deptService = deptService;
+	private ISystemDictionaryDetailService systemDictionaryDetailService;
+	public void setSystemDictionaryDetailService(ISystemDictionaryDetailService systemDictionaryDetailService) {
+		this.systemDictionaryDetailService = systemDictionaryDetailService;
 	}
 	//Struts2管理 通过值栈(List/Map)向前台提供数据，
 	//List栈需要：属性+getter；Map栈需要：ActionContext.getContext.put(key,value)
@@ -28,18 +28,18 @@ public class DeptAction extends CRUDAction<Dept>{
 		return pageList;
 	}
 	//Struts2管理 需要setter、getter
-	private DeptQuery baseQuery = new DeptQuery();
-	public DeptQuery getBaseQuery() {
+	private SystemDictionaryDetailQuery baseQuery = new SystemDictionaryDetailQuery();
+	public SystemDictionaryDetailQuery getBaseQuery() {
 		return baseQuery;
 	}
 	//Struts2管理 用于接收和回显前台数据，需要它在栈顶时才放到栈顶
-	private Dept dept;
+	private SystemDictionaryDetail systemDictionaryDetail;
 	
 	//====================================Action方法=========================================
 	//获取所有
 	@Override
 	protected void list() {
-		this.pageList = deptService.findByQuery(baseQuery);
+		this.pageList = systemDictionaryDetailService.findByQuery(baseQuery);
 	}
 	//新建/修改
 	@Override
@@ -53,7 +53,7 @@ public class DeptAction extends CRUDAction<Dept>{
 		if(id==null){
 			baseQuery.setCurrentPage(Integer.MAX_VALUE);
 		}
-		deptService.saveOrUpdate(dept);
+		systemDictionaryDetailService.saveOrUpdate(systemDictionaryDetail);
 	}
 	//ajax删除
 	@Override
@@ -63,7 +63,7 @@ public class DeptAction extends CRUDAction<Dept>{
 		PrintWriter printWriter = response.getWriter();
 		try {
 			if(id!=null){
-				deptService.delete(id);
+				systemDictionaryDetailService.delete(id);
 				printWriter.print("{\"success\":true,\"msg\":\"删除成功\"}");
 			}
 		} catch (Exception e) {
@@ -76,22 +76,22 @@ public class DeptAction extends CRUDAction<Dept>{
 	protected void preparee() {
 	}
 	@Override
-	protected Dept getModell() {
-		return dept;
+	protected SystemDictionaryDetail getModell() {
+		return systemDictionaryDetail;
 	}
 	//=========================prepare拦截器对应的类PrepareInterceptor检测方法前缀prefix='prepare'通过反射调用=======
 	@Override
 	protected void prepareInputt(){
 		if(id!=null){
-			dept = deptService.get(id);//修改需要回显否则不需要(这时会压栈)
+			systemDictionaryDetail = systemDictionaryDetailService.get(id);//修改需要回显否则不需要(这时会压栈)
 		}
 	}
 	@Override
 	protected void prepareSavee() {
 		if(id==null){
-			dept = new Dept();
+			systemDictionaryDetail = new SystemDictionaryDetail();
 		}else{
-			dept = deptService.get(id);
+			systemDictionaryDetail = systemDictionaryDetailService.get(id);
 		}
 	}
 	@Override

@@ -42,7 +42,7 @@ public abstract class CRUDAction<T> extends BaseAction implements ModelDriven<T>
 		savee();
 		return RELOAD;
 	}
-	protected abstract void savee();
+	protected abstract void savee() throws Exception;
 	//删除 employee_delete->EmployeeAction+delete
 	public String delete() throws Exception{
 		deletee();

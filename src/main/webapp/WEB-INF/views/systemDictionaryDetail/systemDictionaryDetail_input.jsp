@@ -11,9 +11,9 @@
 <!-- validator国际化（默认英文，下面的会覆盖上面的） -->
 <script type="text/javascript" src="plugins/validator/js/language/zh_CN.js"></script>
 <!-- 自定义模型js -->
-<script type="text/javascript" src="js/model/dept.js"></script>
+<script type="text/javascript" src="js/model/systemDictionaryDetail.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Dept页面</title>
+<title>SystemDictionaryDetail页面</title>
 </head>
 <body>
 	<s:debug></s:debug>
@@ -46,7 +46,7 @@
 			<div class="row">					       <!-- ===提示：①使用s标签的时候-获取和提交都可以只用name。②不用s标签时-获取需要EL表达式$，提交需要name=== -->
 				<div class="col-xs-12">													       <!-- .col-xs-* 针对超小屏幕和中等屏幕设备所定义的类 -->
 					<!-- 页面内容开始 -->
-					<form id="deptForm" class="form-horizontal" action="dept_save.action" role="form" method="post"><!-- form-horizontal将 label标签和控件组水平并排布局 -->
+					<form id="systemDictionaryDetailForm" class="form-horizontal" action="systemDictionaryDetail_save.action" role="form" method="post"><!-- form-horizontal将 label标签和控件组水平并排布局 -->
 						<s:hidden id="userId" name="id"/>																   <!-- 解决修改回显问题 -->
 						<s:hidden name="baseQuery.currentPage"/>
 						<s:hidden name="baseQuery.pageSize"/>

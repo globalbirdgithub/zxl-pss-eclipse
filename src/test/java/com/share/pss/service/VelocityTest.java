@@ -32,6 +32,7 @@ public class VelocityTest {
 		System.out.println(stringWriter);
 		stringWriter.close();
 	}
+	//根据名称创建模型文件
 	@Test
 	public void testN() throws Exception {
 		VelocityMaker.createCode();

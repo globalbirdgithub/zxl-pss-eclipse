@@ -4,10 +4,12 @@
 	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping package="com.share.pss.domain">
-	<class name="Dept" table="dept">
+	<class name="ProductType" table="producttype">
 		<id name="id">
 			<generator class="native" />
 		</id>
 		<property name="name" column="name" type="string"/>
+		<property name="descs" column="descs" type="string"/>
+		<many-to-one name="parentProductType" column="parent_id" class="com.share.pss.domain.ProductType"/>
 	</class>
 </hibernate-mapping>

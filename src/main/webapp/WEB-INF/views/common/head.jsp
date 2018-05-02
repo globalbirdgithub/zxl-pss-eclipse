@@ -5,6 +5,7 @@
 <!-- basic styles -->
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/bootstrap.min.css" />
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/font-awesome.min.css" />
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/colorbox.css" />
 <!-- ace styles -->
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/ace.min.css" />
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/ace-rtl.min.css" />
@@ -16,4 +17,4 @@
 <!-- ace settings handler -->
 <script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/ace-extra.min.js"></script>
 <!-- diy js -->
-<script type="text/javascript" src="js/common/common.js"></script>
+<script type="text/javascript" src="js/common/common.js"></script> 

@@ -22,7 +22,7 @@ public class VelocityMaker {
 	private static final String WEBAPP = "src/main/webapp/";
 	private static final boolean FLAG = false;//默认不覆盖
 	// 定义模型集合（根据指定名称生成文件）
-	private static String[] domains = {"Menu"};
+	private static String[] domains = {"Product","ProductType","SystemDictionaryType","SystemDictionaryDetail"};
 	// 定义输出文件名集合
 	private static String[] fileNames = { "Service.java", "ServiceImpl.java", "ServiceTest.java", "Query.java",
 			"Action.java", "hbm.xml", "Context.xml", "domain.js", "list.jsp", "input.jsp" };
