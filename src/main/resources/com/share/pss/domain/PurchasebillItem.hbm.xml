@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.share.pss.domain">
+	<class name="PurchasebillItem" table="purchasebillitem">
+		<id name="id">
+			<generator class="native" />
+		</id>
+		<property name="price" column="price"/>
+		<property name="num" column="num"/>
+		<property name="amount" column="amount"/>
+		<property name="descs" column="descs"/>
+		<many-to-one name="product" column="product_id" not-null="true"/>
+		<many-to-one name="purchasebill" column="bill_id" not-null="true"/>
+	</class>
+</hibernate-mapping>

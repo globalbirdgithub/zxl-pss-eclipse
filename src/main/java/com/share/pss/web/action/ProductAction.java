@@ -181,8 +181,6 @@ public class ProductAction extends CRUDAction<Product>{
 	protected void prepareInputt(){
 		if(id!=null){
 			product = productService.get(id);//修改需要回显否则不需要(这时会压栈)
-		}else{
-			product = new Product();
 		}
 	}
 	@Override
@@ -204,7 +202,11 @@ public class ProductAction extends CRUDAction<Product>{
 	public String findChildren() {
 		List<ProductType> childrenList = productTypeService.getProductChildrenTypes(id);
 		putContext("productChilrenTypes", childrenList);
-		return "typeJsonResult";
+		return "productTypeJsonResult";
+	}
+	//=============================订单明细产品选择模态框====================
+	public String bill() throws Exception{
+		this.pageList = productService.findByQuery(baseQuery);
+		return "bill";
 	}
 }
- 

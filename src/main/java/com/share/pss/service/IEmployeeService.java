@@ -1,5 +1,7 @@
 package com.share.pss.service;
 
+import java.util.List;
+
 import com.share.pss.domain.Employee;
 
 /**
@@ -12,4 +14,6 @@ public interface IEmployeeService extends IBaseService<Employee>{
 	boolean findByUsername(String username);
 	//处理登录请求
 	Employee findByLoginUser(String username, String password);
+	//获取所有采购员
+	List<Employee> getAllBuyers();
 }
