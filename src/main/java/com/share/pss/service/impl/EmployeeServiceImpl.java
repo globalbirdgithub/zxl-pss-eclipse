@@ -31,4 +31,11 @@ public class EmployeeServiceImpl extends BaseServiceImpl<Employee> implements IE
 		}
 		return null;
 	}
+	//获取所有采购员信息
+	@Override
+	public List<Employee> getAllBuyers() {
+		String hql = "select o from Employee o where o.department.name=?";
+		List<Employee> buyerList = baseDao.findByHql(hql, "采购部");
+		return buyerList;
+	}
 }

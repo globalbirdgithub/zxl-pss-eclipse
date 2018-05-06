@@ -6,13 +6,15 @@ $(function() {
 		if(parentId==-1){
 			children.append("<option value='-1'>--请选择--</option>");
 		}else{
-			var myData = children.data(parentId);
-			if(myData){
-				for (var i = 0; i < myData.length; i++) {
-					children.append("<option value='"+myData[i].id+"'>"+myData[i].name+"</option>");
+			//缓存，先获取
+			var cacheData = children.data(parentId);
+			if(cacheData){
+				for (var i = 0; i < cacheData.length; i++) {
+					children.append("<option value='"+cacheData[i].id+"'>"+cacheData[i].name+"</option>");
 				}
 			}else{
 				$.get("product_findChildren.action",{id:parentId},function(data){
+					//放入缓存
 					children.data(parentId,data);
 					for (var i = 0; i < data.length; i++) {
 						children.append("<option value='"+data[i].id+"'>"+data[i].name+"</option>");
@@ -53,7 +55,7 @@ $(function() {
 			"productType.parentProductType.id" : {//一级类型
 				validators : {
 					different : {
-						field : "parentProductType.id",
+						field : "productType.id",
 						message : '必须选择正确产品类型'
 					}
 				}
