@@ -2,3 +2,7 @@
 2018-03-28 12:18:37,994 INFO [com.share.pss.service.LogTest] - 
 2018-03-28 12:18:37,994 WARN [com.share.pss.service.LogTest] - 
 2018-03-28 12:18:37,994 ERROR [com.share.pss.service.LogTest] - 
+2018-05-06 21:23:08,536 ERROR [org.hibernate.hql.PARSER] - line 1:111: unexpected token: =
+2018-05-06 21:26:53,400 ERROR [org.hibernate.hql.PARSER] - line 1:96: unexpected token: and
+2018-05-06 23:16:35,802 ERROR [org.hibernate.hql.PARSER] - line 1:92: unexpected token: whereo
+2018-05-06 23:43:57,185 ERROR [org.hibernate.hql.PARSER] - line 1:55: unexpected token: whereo

@@ -7,6 +7,11 @@
 <title>PurchasebillItem</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <%@include file="/WEB-INF/views/common/head.jsp"%>
+<script type="text/javascript" src="js/model/purchasebillItem.js"></script>
+<script type="text/javascript" src="plugins/My97DatePicker/WdatePicker.js"></script>
+<script src="plugins/highcharts/js/highcharts.js"></script>
+<script src="plugins/highcharts/js/highcharts-3d.js"></script>
+<script src="plugins/highcharts/js/modules/exporting.js"></script>
 </head>
 <body>
 	<%-- <s:debug></s:debug> --%>
@@ -30,27 +35,28 @@
 		<div class="page-content">
 			<div class="row">
 				<div class="col-xs-12">
-					<div class="table-header">PurchasebillItem列表</div>
+					<div class="table-header">订单交易报表</div>
 					<div class="table-responsive">
 						<div id="sample-table-2_wrapper" class="dataTables_wrapper" role="grid">
 						
 							<div class="row">
 								<form action="purchasebillItem.action" id="domainForm" method="post">
-									<div class="col-sm-4">
-										<div>
-											<label> 显示 <s:select list="{10,20,30,40,50}" name="baseQuery.pageSize" onchange="javascript:$('#domainForm').submit();"></s:select></label>
-											跳转<input type="text" id="pageNum" name="baseQuery.currentPage" value="${pageList.currentPage}" size="2" oncontextmenu="return false" />
-											<button class="btn-pink" type="submit">GO</button>
-										</div>
-									</div>
-									<div class="col-sm-8">
-										<input type="text" placeholder="请输入名称..." name="baseQuery.name" value="${baseQuery.name}" size="15"/>
+									<div class="col-sm-7">
+										<!-- 回显查询时间格式 -->
+										<s:date name="baseQuery.beginDate" format="yyyy-MM-dd" var="bdate"/>
+										<s:date name="baseQuery.endDate" format="yyyy-MM-dd" var="edate"/>
+										交易时间从<s:textfield name="baseQuery.beginDate" value="%{bdate}" onclick="WdatePicker({maxDate:new Date()})" 
+											cssClass="Wdate" style="height:30px;width:100px"/>
+										到<s:textfield name="baseQuery.endDate" value="%{edate}" onclick="WdatePicker({maxDate:new Date()})" 
+											cssClass="Wdate" style="height:30px;width:100px"/>
+										审核状态<s:select list="#{-2:'--请选择--',0:'待审',1:'已审',-1:'作废'}" name="baseQuery.status" />
+										分组<s:select list="#{'o.purchasebill.supplier.name':'供应商分组','o.purchasebill.buyer.username':'采购员分组','month(o.purchasebill.vdate)':'月份分组'}" 
+											 name="baseQuery.groupBy" onchange="javascript:$('#domainForm').submit()"/>
 										<button class="btn btn-xs btn-pink" href="#" onclick="javascript:$('#domainForm').submit();">
 											 <i class="icon-search">搜索</i>
 										</button>
-										<a class="btn btn-xs btn-pink" href="purchasebillItem_input.action">
-											<i class="icon-credit-card">新建</i>	
-										</a>
+										<a data-url="purchasebillItem_chart3d.action" class="btn btn-xs btn-pink" href="#">3D</a>
+										<a data-url="purchasebillItem_chart2d.action" class="btn btn-xs btn-pink" href="#">2D</a>
 									</div>
 								</form>
 							</div>
@@ -58,52 +64,60 @@
 							<table id="sample-table-2" class="table table-striped table-bordered table-hover">
 								<thead>
 									<tr>
-										<th class="center" width="5%">
-											<label> 
-												<input type="checkbox" class="ace" /><span class="lbl"></span>
-											</label>
-										</th>
-										<th width="5%">编号</th>
-										<th width="10%">名称</th>
-										<th width="10%"><i class="icon-time"></i>操作</th>
+										<th width="4%">明细编号</th>
+										<th width="6%">供应商</th>
+										<th width="6%">采购员</th>
+										<th width="10%">交易时间</th>
+										<th width="10%">产品名称</th>
+										<th width="10%">产品类型名称</th>
+										<th width="6%">采购价格</th>
+										<th width="6%">采购数量</th>
+										<th width="6%">小计</th>
+										<th width="6%">状态</th>
 									</tr>
 								</thead>
 								<tbody id="itemTbody">
-									<s:iterator value="pageList.rows">
-										<s:if test="id==#parameters.id[0]">
-											<tr style="color:red">
-										</s:if>
-										<s:else>
-											<tr>
-										</s:else>
-											<td class="center">
-												<label> 
-													<input type="checkbox" class="ace" /><span class="lbl"></span>
-												</label>
-											</td>
-											<td>${id}</td>
-											<td>${name}</td>
-											<td>
-												<div class="visible-md visible-lg hidden-sm hidden-xs action-buttons">
-													<a class="green" href="#" onclick="updateDomain('purchasebillItem_input.action?id=${id}')">
-														<i class="icon-pencil bigger-130"></i>
-													</a> 
-													<a class="red" href="#" onclick="deleteDomain('purchasebillItem_delete.action?id=${id}',this)">
-														<i class="icon-trash bigger-130"></i>
-													</a>
-												</div>
-											</td>
+									<s:iterator value="#list" var="objects">
+										<tr>
+											<td colspan="10" align="left">${objects[0]}-${objects[1]}条记录</td>
+										</tr>
+										<s:set value="0" var="totalNum"/>
+										<s:set value="0" var="totalAmount"/>
+										<s:iterator value="findItems(#objects[0])">
+											<tr align="center">
+												<td>${id}</td>
+												<td>${purchasebill.supplier.name}</td>
+												<td>${purchasebill.buyer.username}</td>
+												<td>${purchasebill.vdate}</td>
+												<td>${product.name}</td>
+												<td>${product.productType.name}</td>
+												<td>${price}</td> 
+												<td>${num}</td>
+												<td>${amount}</td>
+												<td>
+													<s:if test="purchasebill.status==0"><span class="label label-warning">待审</span></s:if>
+													<s:elseif test="purchasebill.status==1"><span class="label label-success">已审</span></s:elseif>
+													<s:else><span class="label">作废</span></s:else>
+												</td>
+											</tr>
+											<s:set value="#totalNum+num" var="totalNum"/>
+											<s:set value="#totalAmount+amount" var="totalAmount"/>
+										</s:iterator>
+										<tr style="color: red" align="center">
+											<td colspan="7" align="left">合计</td>
+											<td>${totalNum}</td>
+											<td>${totalAmount}</td>
+											<td></td>
 										</tr>
 									</s:iterator>
 								</tbody>
 							</table>
-							<%@ include file="/WEB-INF/views/common/page.jsp" %>
-							<%@ include file="/WEB-INF/views/common/modal.jsp" %>
-						</div><!-- /.modal-content -->
-					</div><!-- /.modal-dialog -->
+						</div>
+					</div>
 				</div><!-- /.col -->
 			</div><!-- /.row -->
 		</div><!-- /.page-content -->
 	</div><!-- /.main-content -->
+	<%@include file="highchartsModal.jsp"%>
 </body>
 </html>

@@ -1,18 +1,15 @@
-//字段验证功能js
 $(function(){
-	$("#purchasebillItemForm").bootstrapValidator({
-        message: '值不能为空',                                                                                              // 字段通用提示语
-        feedbackIcons: {
-            valid: 'glyphicon glyphicon-ok',
-            invalid: 'glyphicon glyphicon-remove',
-            validating: 'glyphicon glyphicon-refresh'
-        },
-        fields: {
-            name: {
-                validators: {
-                    notEmpty:{message:'值不能为空'},
-                }
-            }
-        }
+	//获取饼图数据
+	$(".btn").click(function(){
+		var url = $(this).data('url');
+		if(url){
+			$('.modal-body').html('加载中...');
+			$('.modal-body').load(url+"?"+$('#domainForm').serialize());
+			$('#myModal').modal({
+				backdrop:true,
+				keyboard:true,
+				show:true
+			});
+		}
 	});
 });

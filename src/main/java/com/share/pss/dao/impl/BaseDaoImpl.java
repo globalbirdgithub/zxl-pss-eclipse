@@ -2,6 +2,7 @@ package com.share.pss.dao.impl;
 
 import java.io.Serializable;
 import java.sql.SQLException;
+import java.util.Arrays;
 import java.util.List;
 
 import org.hibernate.HibernateException;
@@ -90,6 +91,8 @@ public class BaseDaoImpl<T> extends HibernateDaoSupport implements IBaseDao<T>{
 	@SuppressWarnings("rawtypes")
 	@Override
 	public List findByHql(String hql, Object... objects) {
+		System.out.println("baseDao hql:"+hql);
+		System.out.println("baseDao objects:"+Arrays.toString(objects));
 		List list = getHibernateTemplate().find(hql, objects);
 		return list;
 	}

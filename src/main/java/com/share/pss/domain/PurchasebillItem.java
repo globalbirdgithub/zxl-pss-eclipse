@@ -75,4 +75,9 @@ public class PurchasebillItem {
 		this.purchasebill = purchasebill;
 	}
 
+	@Override
+	public String toString() {
+		return "PurchasebillItem [id=" + id + ", price=" + price + ", num=" + num + ", amount=" + amount + ", descs="
+				+ descs + "]";
+	}
 }

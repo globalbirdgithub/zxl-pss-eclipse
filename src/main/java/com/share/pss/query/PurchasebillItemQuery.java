@@ -1,6 +1,7 @@
 package com.share.pss.query;
 
-import org.apache.commons.lang3.StringUtils;
+import java.util.Date;
+import org.apache.commons.lang.time.DateUtils;
 import com.share.pss.domain.PurchasebillItem;
 
 /**
@@ -10,9 +11,13 @@ import com.share.pss.domain.PurchasebillItem;
  */
 public class PurchasebillItemQuery extends BaseQuery {
 	// 高级查询参数
-	private String name;
+	private Integer status;
+	private Date beginDate;
+	private Date endDate;
+	// 分组查询条件(默认按照供应商名称)
+	private String groupBy = "o.purchasebill.supplier.name";
 
-	// 将类名PurchasebillItem传递给父类的hql查询语句
+	// 将类名Purchasebill传递给父类的hql查询语句
 	public PurchasebillItemQuery() {
 		super(PurchasebillItem.class.getSimpleName());
 	}
@@ -20,17 +25,48 @@ public class PurchasebillItemQuery extends BaseQuery {
 	// 覆写父类抽象方法；传递具体高级查询参数给父类；
 	@Override
 	protected void addCondition() {
-		if (StringUtils.isNoneBlank(name)) {
-			addCondition("o.name like ?", "%" + name + "%");
+		if (status != null && status != -2) {
+			addCondition("o.purchasebill.status=?", status);
+		}
+		if (beginDate != null) {
+			addCondition("o.purchasebill.vdate>=?", beginDate);
+		}
+		if (endDate != null) {
+			Date date = DateUtils.addDays(endDate, 1);
+			addCondition("o.purchasebill.vdate<?", date);
 		}
 	}
 
-	// 以下setter/getter提供给Struts2使用
-	public String getName() {
-		return name;
+	public Integer getStatus() {
+		return status;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setStatus(Integer status) {
+		this.status = status;
 	}
+
+	public Date getBeginDate() {
+		return beginDate;
+	}
+
+	public void setBeginDate(Date beginDate) {
+		this.beginDate = beginDate;
+	}
+
+	public Date getEndDate() {
+		return endDate;
+	}
+
+	public void setEndDate(Date endDate) {
+		this.endDate = endDate;
+	}
+
+	public String getGroupBy() {
+		return groupBy;
+	}
+
+	public void setGroupBy(String groupBy) {
+		this.groupBy = groupBy;
+	}
+
 }
