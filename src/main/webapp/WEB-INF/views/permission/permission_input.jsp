@@ -81,7 +81,7 @@
 								<button class="btn btn-success" type="button" onclick="clearForm()">
 									<i class="icon-refresh bigger-110"></i> 清空
 								</button>
-								<button class="btn btn-warning" type="button" onclick="cancel()">
+								<button class="btn btn-warning" type="button" onclick="cancel('permission')">
 									<i class="icon-undo bigger-110"></i> 取消
 								</button>
 							</div>

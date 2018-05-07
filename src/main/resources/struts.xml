@@ -42,6 +42,13 @@
 				<!-- 4.排除空的属性不输出 -->
 				<param name="excludeNullProperties">true</param>
 			</result>
+			<result name="chartsJsonResult" type="json">
+				<!-- 2.默认输出当前action的get方法的内容 -->
+				<!-- 3.修改指定输出的对象 -->
+				<param name="root">#chartsJson</param>
+				<!-- 4.排除空的属性不输出 -->
+				<param name="excludeNullProperties">true</param>
+			</result>
 		</global-results>
 		<!-- 主页跳转，注意action顺序 -->
 		<action name="main_*" class="mainAction" method="{1}">

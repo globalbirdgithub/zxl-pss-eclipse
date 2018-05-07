@@ -6,8 +6,6 @@ import org.apache.commons.lang.time.DateUtils;
 
 import com.share.pss.domain.Purchasebill;
 
-import freemarker.template.utility.DateUtil;
-
 /**
  * @author MrZhang
  * @date 2017年12月13日 上午2:36:19

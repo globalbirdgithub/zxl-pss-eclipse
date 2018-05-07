@@ -15,6 +15,8 @@ public abstract class BaseQuery {
 	//分页查询语句hql
 	private StringBuilder countHql;// 总条数sql查询语句
 	private StringBuilder limitHql;// 分页sql查询语句
+	//专门为报表准备
+	private StringBuilder whereHql;
 	//分页/高级查询参数集合
 	private List<Object> paramList;// sql参数集合（底层数组）
 	
@@ -24,6 +26,7 @@ public abstract class BaseQuery {
 	public BaseQuery(String className) {
 		this.countHql = new StringBuilder("select count(o) from "+className+" o");
 		this.limitHql = new StringBuilder("select o from "+className+" o");
+		this.whereHql = new StringBuilder();
 		this.paramList = new ArrayList<>();
 	}
 	//父类与子类之间通过抽象方法传递参数
@@ -38,9 +41,11 @@ public abstract class BaseQuery {
 		if(paramList.size()==0){//如果没参数则拼接where
 			countHql.append(" where ").append(hql);
 			limitHql.append(" where ").append(hql);
+			whereHql.append(" where ").append(hql);
 		}else{//有参数则拼接and
 			countHql.append(" and ").append(hql);
 			limitHql.append(" and ").append(hql);
+			whereHql.append(" and ").append(hql);
 		}
 		paramList.addAll(Arrays.asList(object));//将参数添加到集合List
 	};
@@ -60,6 +65,10 @@ public abstract class BaseQuery {
 	public String getLimitHql() {
 		builderAddCondition();//获取hql拼接查询条件
 		return limitHql.toString();
+	}
+	public String getWhereHql() {
+		builderAddCondition();//获取hql拼接查询条件
+		return whereHql.toString();
 	}
 	public List<Object> getParamList() {
 		builderAddCondition();//获取hql拼接查询条件
