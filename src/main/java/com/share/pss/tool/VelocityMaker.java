@@ -20,9 +20,9 @@ public class VelocityMaker {
 	private static final String TEST = "src/test/java/";
 	private static final String RESOURCES = "src/main/resources/";
 	private static final String WEBAPP = "src/main/webapp/";
-	private static final boolean FLAG = false;//默认不覆盖
+	private static final boolean FLAG = true;//默认不覆盖
 	// 定义模型集合（根据指定名称生成文件）
-	private static String[] domains = {"Purchasebill","PurchasebillItem","Supplier"};
+	private static String[] domains = {"Depot","ProductStock","StockIncomebill","StockIncomebillItem"};
 	// 定义输出文件名集合
 	private static String[] fileNames = { "Service.java", "ServiceImpl.java", "ServiceTest.java", "Query.java",
 			"Action.java", "hbm.xml", "Context.xml", "domain.js", "list.jsp", "input.jsp" };

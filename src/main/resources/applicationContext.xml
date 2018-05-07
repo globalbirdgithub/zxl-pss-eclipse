@@ -67,4 +67,5 @@ http://www.springframework.org/schema/aop/spring-aop.xsd
 		<aop:advisor advice-ref="txAdvice" pointcut-ref="pointcut"/>
 	</aop:config>
 	<import resource="manager/*Context.xml"/>
+	<import resource="plugin/Context-*.xml"/>
 </beans>
